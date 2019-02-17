@@ -6,7 +6,7 @@ public class App
 {
     public static void main( String[] args ) {
         Generator generator = new Generator();
-        String generatorText = generator.getSaltString();
-        System.out.println(generator.domena(generatorText));
+        String generatorText = generator.getRandomString();
+        System.out.println(generator.addDomain(generatorText));
     }
 }
