@@ -77,4 +77,13 @@ public class Address {
         boolean postalCodeMatch = this.postalCode.equals(address.postalCode);
         return streetMatch && cityMatch && countryMatch && stateMatch && postalCodeMatch;
     }
+    @Override
+    public String toString() {
+        return "Address{street='"
+                + this.streetAddress + '\'' + ", city='"
+                + this.city + '\'' + ", country='"
+                + this.country + '\'' + ", state='"
+                + this.state + '\'' + ", postalCode='"
+                + this.postalCode + '\'' + '}';
+    }
 }

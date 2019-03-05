@@ -4,12 +4,12 @@ import pl.infoshare.generators.CredentialsGenerator;
 
 public class UserBase {
 
-    private String firstname;
-    private String lastname;
-    private Address address;
-    private Address shippingAddress;
-    private String email;
-    private String phoneNumber;
+    protected String firstname;
+    protected String lastname;
+    protected Address address;
+    protected Address shippingAddress;
+    protected String email;
+    protected String phoneNumber;
     protected boolean isRegistred;
 
 
