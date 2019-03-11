@@ -3,7 +3,7 @@ package pl.infoshare.dataModels;
 
 import pl.infoshare.generators.CredentialsGenerator;
 
-public class RegisteredUser extends UserBase{
+public class RegisteredUser extends UserBase {
 
     private String password;
 
@@ -24,6 +24,16 @@ public class RegisteredUser extends UserBase{
         } else {
             new RegisteredUser();
         }
+    }
+    @Override
+    public String toString() {
+        return "User{firstname='"
+                + this.firstname  + '\'' + ", lastname='"
+                + this.lastname + '\'' + ", \n address='"
+                + this.address.toString() + '\'' + ", phoneNumber='"
+                + this.phoneNumber + '\'' + ", \n shippingAddress='"
+                + this.shippingAddress.toString() + '\'' + ", email='"
+                + this.email + '\'' + '}';
     }
 
 }
