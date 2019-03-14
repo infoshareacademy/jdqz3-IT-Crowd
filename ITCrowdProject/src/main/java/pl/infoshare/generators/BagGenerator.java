@@ -32,8 +32,8 @@ public class BagGenerator extends RandomGenerator {
         bagList.add(vintageBeachBag);
         bagList.add(VintageLaptopBag);
         bagList.add(vintageBagWithLeatherBands);
-
     }
+
 
     public  List<Bag> listCategoryBag(String category) {
         List<Bag> bagCategoryList = new ArrayList<>();

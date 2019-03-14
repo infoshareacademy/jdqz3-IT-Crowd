@@ -90,4 +90,8 @@ public class Bag {
     public String getCollection() {
         return collection;
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -11,10 +11,10 @@ public class ReviewYourOrderPage extends BasePage {
     private Button proceedToCheckout;
     private By cartItem = By.cssSelector("#mainCartTable > tbody > tr > td:nth-child(1) > div > div.col-sm-8 > span > strong");
     private Label item;
-    private By cartQuantity  = By.xpath("//*[@id='14102']");
+    private By cartQuantity  = By.cssSelector(".input-small[name='quantity']");
     private Label quantity;
-    private By cartPrize = By.cssSelector("#mainCartTable > tbody > tr > td:nth-child(3) > strong");
-    private Label prize;
+    private By cartPrice = By.cssSelector("#mainCartTable > tbody > tr > td:nth-child(3) > strong");
+    private Label price;
     private By cartTotal = By.cssSelector("#mainCartTable > tbody > tr > td:nth-child(4) > strong");
     private Label total;
 
@@ -29,26 +29,24 @@ public class ReviewYourOrderPage extends BasePage {
         this.proceedToCheckout.clickWithJs();
     }
 
-    public boolean isCartContentCorrect(){
-        if(this.cartItem != null && this.quantity != null && this.prize != null && this.total != null){
-            return  true;
-        } else {
-            return false;
-        }
+    public Label getItem() {
+        this.item = new Label(this.driver, this.cartItem);
+        return item;
     }
-//
-//    public boolean isCartContentCorrect(){
-//        String actualName = new Label(this.driver, addedItemNameSelector).read();
-//        int actualQuantity = Integer.parseInt(new Label(this.driver, addedItemQuantitySelector).getValue());
-//        double actualPrice = Double.parseDouble(new Label(this.driver, addedItemPriceSelector).read().substring(1));
-//        double actualTotal = Double.parseDouble(new Label(this.driver, addedItemTotalSelector).read().substring(1));
-//
-//        String expectedName = "Chic vintage DeVille";
-//        int expectedQuantity = 1;
-//        double expectedPrice = 78.00;
-//        double expectedTotal = expectedPrice * expectedQuantity;
-//
-//        return actualName.equals(expectedName) && actualQuantity == expectedQuantity && actualPrice == expectedPrice && actualTotal == expectedTotal;
-//    }
+
+    public Label getQuantity() {
+        this.quantity = new Label(this.driver, this.cartQuantity);
+        return quantity;
+    }
+
+    public Label getPrice() {
+        this.price = new Label(this.driver, this.cartPrice);
+        return price;
+    }
+
+    public Label getTotal() {
+        this.total = new Label(this.driver, this.cartTotal);
+        return total;
+    }
 }
 

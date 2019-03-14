@@ -7,10 +7,13 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.infoshare.catrgories.AddToCartTests;
 import pl.infoshare.catrgories.PurchaseTests;
 import pl.infoshare.dataModels.Address;
+import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class PurchaseTest {
 
@@ -18,6 +21,7 @@ public class PurchaseTest {
     private BasePage basePage;
     private Address address;
     private RegisteredUser user;
+    private Bag bag;
 
     @Before
     public void startBrowser() {
@@ -51,5 +55,22 @@ public class PurchaseTest {
 
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
         Assert.assertNotNull("order is null", orderConfirmationPage.readOrderNumber());
+    }
+
+        @Category(AddToCartTests.class)
+        @Test
+        public void addToCart() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCatalouqePage handbagCatalouqePage = new HandbagCatalouqePage(driver);
+        handbagCatalouqePage.addToCart();
+        handbagCatalouqePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        assertThat(reviewYourOrderPage.getItem().getText()).isEqualTo("Chic vintage DeVille");
+        assertThat(reviewYourOrderPage.getQuantity().getValue()).isEqualTo("1");
+        assertThat(reviewYourOrderPage.getPrice().getText()).isEqualTo("$78.00");
+        assertThat(reviewYourOrderPage.getTotal().getText()).isEqualTo("$78.00");
     }
 }
