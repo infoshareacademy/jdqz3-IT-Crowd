@@ -33,6 +33,7 @@ public class Button {
     public Button clickWithJs(){
         JavascriptExecutor runner = (JavascriptExecutor) driver;
         String script = "arguments[0].click()";
+       // String script = "arguments[0].scrollIntoView()";
         runner.executeScript(script, this.element);
         return this;
     }
