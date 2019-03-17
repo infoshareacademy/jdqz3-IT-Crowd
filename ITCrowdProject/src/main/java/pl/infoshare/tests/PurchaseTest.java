@@ -108,32 +108,16 @@ public class PurchaseTest {
         mainPage.chooseCategory(randomBag.getCategory());
 
         CategoriesMenu categoriesMenu = new CategoriesMenu();
-        System.out.println(randomBag.getCategory());
-        System.out.println(categoriesMenu.switchToPage(randomBag.getCategory()));
-        System.out.println(randomBag.getName());
-        System.out.println(randomBag.toString());
 
         CatalouqePage catalouqePage = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBag.getCategory()));
         catalouqePage.getRandomBag(randomBag.getName());
         catalouqePage.addToCart();
-  //    catalouqePage.checkout();
 
         mainPage.chooseCategory(randomBagNext.getCategory());
-        System.out.println(randomBagNext.getCategory());
-        System.out.println(categoriesMenu.switchToPage(randomBagNext.getCategory()));
-        System.out.println(randomBagNext.getName());
-        System.out.println(randomBagNext.toString());
-
         CatalouqePage catalouqePageNext = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBagNext.getCategory()));
         catalouqePageNext.getRandomBag(randomBagNext.getName());
         catalouqePageNext.addToCart();
         catalouqePageNext.checkout();
-
-//        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
-//        assertThat(reviewYourOrderPage.getItem().getText()).isEqualTo(randomBag.getName());
-//        assertThat(reviewYourOrderPage.getQuantity().getValue()).isEqualTo("1");
-//        assertThat(Double.parseDouble(reviewYourOrderPage.getPrice().getText().substring(1))).isEqualTo(randomBag.getPrice().doubleValue());
-//        assertThat(Double.parseDouble(reviewYourOrderPage.getTotal().getText().substring(1))).isEqualTo(randomBag.getPrice().doubleValue());
     }
 
 }

@@ -26,13 +26,10 @@ public class CatalouqePage extends BasePage {
 
     public void checkout(){
         this.shoppingCart = new Button(this.driver, this.shippingCartLink);
-        this.shoppingCart.click();
         this.shoppingCart.safeClick();
-        this.chackoutLink= By.cssSelector(".checkout-bg > a");
-        //this.chackoutLink= By.cssSelector("#miniCartDetails > li.checkout-bg > a");
+        this.chackoutLink= By.cssSelector("#miniCartDetails > li.checkout-bg > a");
         this.checkout= new Button(this.driver, this.chackoutLink);
         checkout.clickWithJs();
-        //checkout.click();
     }
 
     public void getRandomBag(String name){

@@ -37,4 +37,10 @@ public class Button {
         runner.executeScript(script, this.element);
         return this;
     }
+    public Button scrollWithJs(){
+        JavascriptExecutor runner = (JavascriptExecutor) driver;
+        String script = "arguments[0].scrollIntoView()";
+        runner.executeScript(script, this.element);
+        return this;
+    }
 }
