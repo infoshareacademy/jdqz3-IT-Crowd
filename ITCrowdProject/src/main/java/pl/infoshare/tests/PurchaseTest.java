@@ -59,11 +59,12 @@ public class PurchaseTest {
 
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.sectionFullName(user);
-        checkoutPage.sectionCountryState(user);
+        checkoutPage.fillInSectionCountryState(user);
         checkoutPage.submitOrder();
 
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-        Assert.assertNotNull("order is null", orderConfirmationPage.readOrderNumber());
+        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+        assertThat(orderConfirmationPage.readOrderNumber().startsWith("Your order id is"));
     }
 
         @Category(AddToCartTests.class)
@@ -116,8 +117,8 @@ public class PurchaseTest {
         mainPage.chooseCategory(randomBagNext.getCategory());
         CatalouqePage catalouqePageNext = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBagNext.getCategory()));
         catalouqePageNext.getRandomBag(randomBagNext.getName());
-        catalouqePageNext.addToCart();
-        catalouqePageNext.checkout();
+   //     catalouqePageNext.addToCart();
+  //      catalouqePageNext.checkout();
     }
 
 }

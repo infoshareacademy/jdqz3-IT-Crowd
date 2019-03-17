@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Button {
-    private  int timeout = 20;
+    private  int timeout = 40;
     private WebElement element;
     private WebDriver driver;
 
@@ -33,7 +33,6 @@ public class Button {
     public Button clickWithJs(){
         JavascriptExecutor runner = (JavascriptExecutor) driver;
         String script = "arguments[0].click()";
-       // String script = "arguments[0].scrollIntoView()";
         runner.executeScript(script, this.element);
         return this;
     }

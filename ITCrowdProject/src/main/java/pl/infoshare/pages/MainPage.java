@@ -14,7 +14,6 @@ public class MainPage extends BasePage {
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/";
         this.driver.get(this.url);
-       // this.handbagsButton = new Button(this.driver, this.handbagsLink);
     }
 
     public void chooseHandbagsCategory(){

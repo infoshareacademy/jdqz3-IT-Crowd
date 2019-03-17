@@ -24,9 +24,9 @@ public class CheckoutPage extends BasePage{
     private TextInput state;
     private By postalCodeInput;
     private TextInput postal;
-    private By emailInput;
+    private By emailInput=By.cssSelector("input[name='customer.emailAddress']");
     private TextInput email;
-    private By phoneNumberInput;
+    private By phoneNumberInput=By.cssSelector("input[name='customer.billing.phone']");
     private TextInput phoneNumber;
     private By submitOrderButton;
     private Button submitOrder;
@@ -39,6 +39,8 @@ public class CheckoutPage extends BasePage{
         this.lastName = new TextInput(this.driver, this.lastNameInput);
         this.street = new TextInput(this.driver, this.streetInput);
         this.city = new TextInput(this.driver, this.cityInput);
+        this.phoneNumber = new TextInput(this.driver, this.phoneNumberInput);
+        this.email = new TextInput(this.driver, this.emailInput);
     }
 
     public void sectionFullName(RegisteredUser user){
@@ -48,7 +50,7 @@ public class CheckoutPage extends BasePage{
         this.city.sendKeys(user.getAddress().getCity());
     }
 
-    public void sectionCountryState(RegisteredUser user){
+    public void fillInSectionCountryState(RegisteredUser user){
         this.countrySelect=By.cssSelector("select[name='customer.billing.country']");
         this.country = new Select(this.driver, this.countrySelect);
         this.country.selectText(user.getAddress().getCountry());
@@ -60,13 +62,7 @@ public class CheckoutPage extends BasePage{
         this.postalCodeInput=By.cssSelector("input[name='customer.billing.postalCode']");
         this.postal = new TextInput(this.driver, this.postalCodeInput);
         this.postal.sendKeys(user.getAddress().getPostalCode());
-
-        this.emailInput=By.cssSelector("input[name='customer.emailAddress']");
-        this.email = new TextInput(this.driver, this.emailInput);
         this.email.sendKeys(user.getEmail());
-
-        this.phoneNumberInput=By.cssSelector("input[name='customer.billing.phone']");
-        this.phoneNumber = new TextInput(this.driver, this.phoneNumberInput);
         this.phoneNumber.sendKeys(user.getPhoneNumber());
     }
 

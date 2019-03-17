@@ -32,7 +32,7 @@ public class HandbagCatalouqePage extends BasePage {
         this.shoppingCart.safeClick();
         this.chackoutLink= By.cssSelector(".checkout-bg > a");
         this.checkout= new Button(this.driver, this.chackoutLink);
-        checkout.click();
+        checkout.clickWithJs();
     }
 
     public void getRandomBag(String name){
