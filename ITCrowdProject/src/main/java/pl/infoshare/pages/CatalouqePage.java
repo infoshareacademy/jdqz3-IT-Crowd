@@ -8,7 +8,7 @@ import pl.infoshare.elements.Button;
 public class CatalouqePage extends BasePage {
 
     private Button addToCart;
-    private By shippingCartLink= By.xpath("//*[@id='miniCartSummary']/a[text()='Shopping cart ']");
+    private By shippingCartLink= By.cssSelector("#miniCartSummary a span");
     private Button shoppingCart;
     private By chackoutLink;
     private Button checkout;
@@ -27,13 +27,13 @@ public class CatalouqePage extends BasePage {
     public void checkout(){
         this.shoppingCart = new Button(this.driver, this.shippingCartLink);
         this.shoppingCart.safeClick();
-        this.chackoutLink= By.cssSelector("#miniCartDetails > li.checkout-bg > a");
+        this.chackoutLink= By.cssSelector("li.checkout-bg  a");
         this.checkout= new Button(this.driver, this.chackoutLink);
         checkout.clickWithJs();
     }
 
     public void getRandomBag(String name){
-        bag = By.cssSelector("#productsContainer [item-name='"+name+"'] .addToCart");
+        bag = By.cssSelector("#productsContainer [item-name='"+name+"'] div.store-btn-addtocart");
         this.addToCart = new Button(this.driver, this.bag);
     }
 }

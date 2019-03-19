@@ -1,12 +1,12 @@
 package pl.infoshare.tests;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.infoshare.catrgories.AddToCartNextRandomBagTest;
 import pl.infoshare.catrgories.AddToCartRandomBagTest;
 import pl.infoshare.catrgories.AddToCartTests;
 import pl.infoshare.catrgories.PurchaseTests;
@@ -16,10 +16,8 @@ import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.generators.BagGenerator;
 import pl.infoshare.pages.*;
 import pl.infoshare.pages.components.CategoriesMenu;
-
-import java.text.DecimalFormat;
-
 import static org.assertj.core.api.Assertions.*;
+
 
 public class PurchaseTest {
 
@@ -64,7 +62,6 @@ public class PurchaseTest {
 
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
-        assertThat(orderConfirmationPage.readOrderNumber().startsWith("Your order id is"));
     }
 
         @Category(AddToCartTests.class)
@@ -103,6 +100,7 @@ public class PurchaseTest {
         assertThat(Double.parseDouble(reviewYourOrderPage.getTotal().getText().substring(1))).isEqualTo(randomBag.getPrice().doubleValue());
     }
 
+    @Category(AddToCartNextRandomBagTest.class)
     @Test
     public void addToCartNextRandomBag() {
         MainPage mainPage = new MainPage(driver);
@@ -117,8 +115,13 @@ public class PurchaseTest {
         mainPage.chooseCategory(randomBagNext.getCategory());
         CatalouqePage catalouqePageNext = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBagNext.getCategory()));
         catalouqePageNext.getRandomBag(randomBagNext.getName());
-   //     catalouqePageNext.addToCart();
-  //      catalouqePageNext.checkout();
-    }
+        catalouqePageNext.addToCart();
+        catalouqePageNext.checkout();
 
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        assertThat(Double.parseDouble(reviewYourOrderPage.getTotalsSubtotal().getText().substring(1)))
+                .isEqualTo(randomBag.getPrice().doubleValue() + randomBagNext.getPrice().doubleValue() );
+        assertThat(Double.parseDouble(reviewYourOrderPage.getTotalsTotal().getText().substring(1)))
+                .isEqualTo(randomBag.getPrice().doubleValue() + randomBagNext.getPrice().doubleValue());
+   }
 }

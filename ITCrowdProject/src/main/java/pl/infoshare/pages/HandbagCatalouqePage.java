@@ -7,9 +7,9 @@ import pl.infoshare.elements.Button;
 
 public class HandbagCatalouqePage extends BasePage {
 
-    private By chickVintageDeVilleLink= By.cssSelector("#productsContainer > .col-md-4:nth-child(2) .addToCart");
+    private final By chickVintageDeVilleLink = By.cssSelector("#productsContainer [item-name='Chic vintage DeVille'] div.store-btn-addtocart");
     private Button addToCart;
-    private By shippingCartLink= By.xpath("//*[@id='miniCartSummary']/a[text()='Shopping cart ']");
+    private By shippingCartLink= By.cssSelector("#miniCartSummary a span");
     private Button shoppingCart;
     private By chackoutLink;
     private Button checkout;
@@ -28,15 +28,14 @@ public class HandbagCatalouqePage extends BasePage {
 
     public void checkout(){
         this.shoppingCart = new Button(this.driver, this.shippingCartLink);
-        this.shoppingCart.click();
         this.shoppingCart.safeClick();
-        this.chackoutLink= By.cssSelector(".checkout-bg > a");
+        this.chackoutLink= By.cssSelector("li.checkout-bg a");
         this.checkout= new Button(this.driver, this.chackoutLink);
         checkout.clickWithJs();
     }
 
     public void getRandomBag(String name){
-        randomBag = By.cssSelector("#productsContainer [item-name='"+name+"'] .addToCart");
+        randomBag = By.cssSelector("#productsContainer [item-name='"+name+"'] div.store-btn-addtocart");
         this.addToCart = new Button(this.driver, this.randomBag);
     }
 }

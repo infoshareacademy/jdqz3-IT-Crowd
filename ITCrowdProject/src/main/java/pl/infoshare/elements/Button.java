@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Button {
-    private  int timeout = 40;
+    private  int timeout = 60;
     private WebElement element;
     private WebDriver driver;
 
