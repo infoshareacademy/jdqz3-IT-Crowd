@@ -3,9 +3,7 @@ package pl.infoshare.generators;
 public class AddressGenerator extends RandomGenerator{
 
     private static String[] cities = {
-            "Belgium", "Brazil", "Canada",
-            "Czech Republic", "France", "India",
-            "Italy", "Switzerland", "United States" };
+            "Belgium", "Brazil", "Czech Republic", "France", "India", "Italy" };
 
     public static String generateCity(){
         return capitalize(genrateRandomString(7));
