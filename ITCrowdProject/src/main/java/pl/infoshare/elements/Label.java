@@ -16,8 +16,11 @@ public class Label {
         WebDriverWait wait = new WebDriverWait(this.driver, timeout);
         element = wait.until(ExpectedConditions.elementToBeClickable((by)));
     }
-
-    public String getInput(){
+    public String getText(){
         return this.element.getText();
+    }
+
+    public String getValue(){
+        return this.element.getAttribute("value");
     }
 }
