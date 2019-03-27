@@ -1,4 +1,4 @@
 package pl.infoshare.categories;
 
-public interface AddToCartTests {
+public interface AddToCartTest {
 }

@@ -41,15 +41,15 @@ public class PurchaseTest {
         basePage.close();
     }
 
-    @Category(PurchaseTests.class)
+    @Category(pl.infoshare.categories.PurchaseTest.class)
     @Test
     public void purchase() {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
 
-        HandbagCatalouqePage handbagCatalouqePage = new HandbagCatalouqePage(driver);
-        handbagCatalouqePage.addToCart();
-        handbagCatalouqePage.checkout();
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.proceedToCheckout();
@@ -63,15 +63,15 @@ public class PurchaseTest {
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
 
-        @Category(AddToCartTests.class)
+        @Category(AddToCartTest.class)
         @Test
         public void addToCart() {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
 
-        HandbagCatalouqePage handbagCatalouqePage = new HandbagCatalouqePage(driver);
-        handbagCatalouqePage.addToCart();
-        handbagCatalouqePage.checkout();
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         assertThat(reviewYourOrderPage.getItem().getText()).isEqualTo("Chic vintage DeVille");
@@ -111,7 +111,8 @@ public class PurchaseTest {
         catalouqePage.getRandomBag(randomBag.getName());
         catalouqePage.addToCart();
 
-        mainPage.chooseCategory(randomBagNext.getCategory());
+        MainPage mainPageNext = new MainPage(driver);
+        mainPageNext.chooseCategory(randomBagNext.getCategory());
         CatalouqePage catalouqePageNext = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBagNext.getCategory()));
         catalouqePageNext.getRandomBag(randomBagNext.getName());
         catalouqePageNext.addToCart();
@@ -131,10 +132,10 @@ public class PurchaseTest {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseCategory(randomLaptopBag.getCategory());
 
-        LaptopBagsCatalouqePage laptopBagsCatalouqePage = new LaptopBagsCatalouqePage(driver);
-        laptopBagsCatalouqePage.getRandomBag(randomLaptopBag.getName());
-        laptopBagsCatalouqePage.addToCart();
-        laptopBagsCatalouqePage.checkout();
+        LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
+        laptopBagsCataloguePage.getRandomBag(randomLaptopBag.getName());
+        laptopBagsCataloguePage.addToCart();
+        laptopBagsCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.proceedToCheckout();

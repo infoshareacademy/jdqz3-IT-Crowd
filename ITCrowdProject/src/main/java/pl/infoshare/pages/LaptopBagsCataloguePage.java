@@ -6,7 +6,7 @@ import pl.infoshare.elements.Button;
 import pl.infoshare.pages.BasePage;
 
 
-public class LaptopBagsCatalouqePage extends BasePage {
+public class LaptopBagsCataloguePage extends BasePage {
 
     private Button addToCart;
     private By shippingCartLink= By.cssSelector("#miniCartSummary a span");
@@ -15,7 +15,7 @@ public class LaptopBagsCatalouqePage extends BasePage {
     private Button checkout;
     private By bag;
 
-    public LaptopBagsCatalouqePage(WebDriver driver){
+    public LaptopBagsCataloguePage(WebDriver driver){
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/category/laptop-bags.html/ref=c:50,51";
         this.driver.get(this.url);

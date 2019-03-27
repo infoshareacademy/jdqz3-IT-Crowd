@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
 
 
-public class HandbagCatalouqePage extends BasePage {
+public class HandbagCataloguePage extends BasePage {
 
     private final By chickVintageDeVilleLink = By.cssSelector("#productsContainer [item-name='Chic vintage DeVille'] div.store-btn-addtocart");
     private Button addToCart;
@@ -15,7 +15,7 @@ public class HandbagCatalouqePage extends BasePage {
     private Button checkout;
     private By randomBag;
 
-    public HandbagCatalouqePage(WebDriver driver){
+    public HandbagCataloguePage(WebDriver driver){
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/category/handbags.html/ref=c:1";
         this.driver.get(this.url);

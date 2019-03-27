@@ -4,11 +4,10 @@ import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import pl.infoshare.categories.*;
-import pl.infoshare.tests.PurchaseTest;
 
 @RunWith(Categories.class)
-@Categories.IncludeCategory({PurchaseTests.class, AddToCartTests.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class,
+@Categories.IncludeCategory({PurchaseTest.class, AddToCartTest.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class,
         PurchaseLaptopBagTest.class})
-@Suite.SuiteClasses(PurchaseTest.class)
+@Suite.SuiteClasses(pl.infoshare.tests.PurchaseTest.class)
 public class ShopizerTestSuite {
 }
