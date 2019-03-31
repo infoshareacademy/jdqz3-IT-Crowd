@@ -1,4 +1,4 @@
 package pl.infoshare.categories;
 
-public interface PurchaseTest {
+public interface Purchase {
 }
