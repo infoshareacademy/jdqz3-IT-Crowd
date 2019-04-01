@@ -37,22 +37,12 @@ public class FooterTest {
         basePage.close();
     }
 
-//    @Category(SignInOnFooter.class)
-//    @Test
-//    public void signInOnFooter() {
-//        FooterPage footerPage = new FooterPage(driver);
-//        footerPage.clickSignIn();
-//
-//        CustomLogonPage customLogonPage = new CustomLogonPage(driver);
-//        assertThat(customLogonPage.isRegisteredCustomerSection()).isEqualTo("Registered customer");
-//        assertThat(customLogonPage.isNewCustomerSection()).isEqualTo("New customer");
-//    }
 
     @Category(LaptopBagsOnFooter.class)
     @Test
     public void LaptopBagsOnFooter(){
         FooterPage footerPage = new FooterPage(driver);
-        footerPage.clicklaptopBagsButtonOnFuter();
+        footerPage.clickLaptopBagsButtonOnFuter();
 
         LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
         assertThat(laptopBagsCataloguePage.laptopBagTekst()).isEqualTo("Laptop bags");

@@ -21,7 +21,7 @@ public class FooterPage extends BasePage {
         this.signInButton.click();
     }
 
-    public void clicklaptopBagsButtonOnFuter(){
+    public void clickLaptopBagsButtonOnFuter(){
         this.laptopBagsButton.click();
     }
 }
