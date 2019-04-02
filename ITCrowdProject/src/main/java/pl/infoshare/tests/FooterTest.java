@@ -45,7 +45,7 @@ public class FooterTest {
         FooterPage footerPage = new FooterPage(driver);
         footerPage.clickHandbagsButtonOnFooter();
 
-        HandbagCatalouqePage handbagText = new HandbagCatalouqePage(driver);
+        HandbagCataloguePage handbagText = new HandbagCataloguePage(driver);
         assertThat(handbagText.handbagText()).isEqualTo("Handbags");
 
     }
