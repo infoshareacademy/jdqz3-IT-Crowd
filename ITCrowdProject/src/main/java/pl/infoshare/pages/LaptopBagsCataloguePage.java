@@ -6,7 +6,7 @@ import pl.infoshare.elements.Button;
 import pl.infoshare.pages.Sections.ShippingCart;
 
 
-public class CatalouqePage extends BasePage {
+public class LaptopBagsCataloguePage extends BasePage {
 
     private Button addToCart;
     private By chackoutLink;
@@ -14,11 +14,12 @@ public class CatalouqePage extends BasePage {
     private By bag;
     private ShippingCart shippingCart;
 
-    public CatalouqePage(WebDriver driver, String url){
+    public LaptopBagsCataloguePage(WebDriver driver){
         super(driver);
-        this.url = url;
+        this.url = "http://demo.shopizer.com:8080/shop/category/laptop-bags.html/ref=c:50,51";
         this.driver.get(this.url);
     }
+
 
     public void addToCart(){
         this.addToCart.click();
@@ -30,7 +31,7 @@ public class CatalouqePage extends BasePage {
     }
 
     public void checkout(){
-         this.chackoutLink= By.cssSelector("li.checkout-bg  a");
+        this.chackoutLink= By.cssSelector("li.checkout-bg a");
         this.checkout= new Button(this.driver, this.chackoutLink);
         checkout.clickWithJs();
     }

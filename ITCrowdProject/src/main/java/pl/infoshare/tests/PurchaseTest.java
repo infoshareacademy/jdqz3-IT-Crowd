@@ -6,10 +6,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pl.infoshare.categories.AddToCartNextRandomBagTest;
-import pl.infoshare.categories.AddToCartRandomBagTest;
-import pl.infoshare.categories.AddToCartTests;
-import pl.infoshare.categories.PurchaseTests;
+import pl.infoshare.categories.*;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
@@ -27,6 +24,7 @@ public class PurchaseTest {
     private RegisteredUser user;
     private Bag randomBag;
     private Bag randomBagNext;
+    private Bag randomLaptopBag;
 
     @Before
     public void startBrowser() {
@@ -36,6 +34,7 @@ public class PurchaseTest {
         this.user = new RegisteredUser(true);
         this.randomBag = BagGenerator.generateRandomBag();
         this.randomBagNext = BagGenerator.generateRandomBag();
+        this.randomLaptopBag = BagGenerator.generateCategoryRandomBag("Laptop bags");
     }
 
     @After
@@ -43,15 +42,16 @@ public class PurchaseTest {
         basePage.close();
     }
 
-    @Category(PurchaseTests.class)
+    @Category(Purchase.class)
     @Test
     public void purchase() {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
 
-        HandbagCatalouqePage handbagCatalouqePage = new HandbagCatalouqePage(driver);
-        handbagCatalouqePage.addToCart();
-        handbagCatalouqePage.checkout();
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.proceedToCheckout();
@@ -65,15 +65,16 @@ public class PurchaseTest {
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
 
-        @Category(AddToCartTests.class)
+        @Category(AddToCartTest.class)
         @Test
         public void addToCart() {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
 
-        HandbagCatalouqePage handbagCatalouqePage = new HandbagCatalouqePage(driver);
-        handbagCatalouqePage.addToCart();
-        handbagCatalouqePage.checkout();
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         assertThat(reviewYourOrderPage.getItem().getText()).isEqualTo("Chic vintage DeVille");
@@ -92,6 +93,7 @@ public class PurchaseTest {
         CatalouqePage catalouqePage = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBag.getCategory()));
         catalouqePage.getRandomBag(randomBag.getName());
         catalouqePage.addToCart();
+        catalouqePage.clickOnShipping();
         catalouqePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
@@ -112,11 +114,14 @@ public class PurchaseTest {
         CatalouqePage catalouqePage = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBag.getCategory()));
         catalouqePage.getRandomBag(randomBag.getName());
         catalouqePage.addToCart();
+        catalouqePage.clickOnShipping();
 
-        mainPage.chooseCategory(randomBagNext.getCategory());
+        MainPage mainPageNext = new MainPage(driver);
+        mainPageNext.chooseCategory(randomBagNext.getCategory());
         CatalouqePage catalouqePageNext = new CatalouqePage(driver, categoriesMenu.switchToPage(randomBagNext.getCategory()));
         catalouqePageNext.getRandomBag(randomBagNext.getName());
         catalouqePageNext.addToCart();
+        catalouqePageNext.clickOnShipping();
         catalouqePageNext.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
@@ -124,5 +129,30 @@ public class PurchaseTest {
                 .isEqualTo(randomBag.getPrice().doubleValue() + randomBagNext.getPrice().doubleValue() );
         assertThat(Double.parseDouble(reviewYourOrderPage.getTotalsTotal().getText().substring(1)))
                 .isEqualTo(randomBag.getPrice().doubleValue() + randomBagNext.getPrice().doubleValue());
-   }
+    }
+
+    @Category(PurchaseLaptopBagTest.class)
+    @Test
+    public void purchaseLaptopBag() {
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseCategory(randomLaptopBag.getCategory());
+
+        LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
+        laptopBagsCataloguePage.getRandomBag(randomLaptopBag.getName());
+        laptopBagsCataloguePage.addToCart();
+        laptopBagsCataloguePage.clickOnShipping();
+        laptopBagsCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionFullName(user);
+        checkoutPage.fillInSectionCountryState(user);
+        checkoutPage.submitOrder();
+
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+    }
 }
