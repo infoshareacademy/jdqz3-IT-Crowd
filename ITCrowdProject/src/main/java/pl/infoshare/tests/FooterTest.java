@@ -49,6 +49,16 @@ public class FooterTest {
         assertThat(handbagText.handbagText()).isEqualTo("Handbags");
 
     }
+    @Category(HomeOnFooter.class)
+    @Test
+    public void homeFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickHomeButtonOnFooter();
+
+        MainPage mainPage = new MainPage(driver);
+        assertThat(mainPage.featuredItemsText()).isEqualTo("Featured items");
+
+    }
 
 
 
