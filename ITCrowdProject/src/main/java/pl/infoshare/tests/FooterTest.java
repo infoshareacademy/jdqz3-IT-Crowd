@@ -60,8 +60,15 @@ public class FooterTest {
 
     }
 
+    @Category(LaptopBagsOnFooter.class)
+    @Test
+    public void LaptopBagsOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickLaptopBagsButtonOnFuter();
+
+        LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
+        assertThat(laptopBagsCataloguePage.laptopBagTekst()).isEqualTo("Laptop bags");
 
 
+    }
 }
-
-
