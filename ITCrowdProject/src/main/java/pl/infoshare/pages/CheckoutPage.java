@@ -2,9 +2,9 @@ package pl.infoshare.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.elements.Button;
+import pl.infoshare.elements.Label;
 import pl.infoshare.elements.Select;
 import pl.infoshare.elements.TextInput;
 
@@ -30,6 +30,8 @@ public class CheckoutPage extends BasePage{
     private TextInput phoneNumber;
     private By submitOrderButton;
     private Button submitOrder;
+    private By validateField = By.cssSelector("#formErrorMessage");
+    private Label validate;
 
     public CheckoutPage(WebDriver driver){
         super(driver);
@@ -41,6 +43,7 @@ public class CheckoutPage extends BasePage{
         this.city = new TextInput(this.driver, this.cityInput);
         this.phoneNumber = new TextInput(this.driver, this.phoneNumberInput);
         this.email = new TextInput(this.driver, this.emailInput);
+        this.validate = new Label(this.driver,this.validateField);
     }
 
     public void sectionFullName(RegisteredUser user){
@@ -67,9 +70,16 @@ public class CheckoutPage extends BasePage{
     }
 
     public void submitOrder() {
-        this.submitOrderButton=By.id("submitOrder");
+        this.submitOrderButton = By.id("submitOrder");
         this.submitOrder = new Button(this.driver, this.submitOrderButton);
         this.submitOrder.safeClick();
     }
+
+    public Label validateResult(){
+        this.validate = new Label (this.driver, this.validateField);
+        this.validate.getText();
+        return validate;
+    }
+
 }
 
