@@ -7,7 +7,6 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.infoshare.categories.*;
-import pl.infoshare.categories.HomeOnFooter;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
@@ -38,26 +37,28 @@ public class FooterTest {
         basePage.close();
     }
 
-    @Category(HomeOnFooter.class)
-    @Test
-    public void homeFooter(){
-        FooterPage footerPage = new FooterPage(driver);
-        footerPage.clickHomeButtonOnFooter();
 
-        MainPage mainPage = new MainPage(driver);
-        assertThat(mainPage.featuredItemsText()).isEqualTo("Featured items");
+    @Category(HandbagsOnFooter.class)
+    @Test
+    public void handbagsOnFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickHandbagsButtonOnFooter();
+
+        HandbagCataloguePage handbagText = new HandbagCataloguePage(driver);
+        assertThat(handbagText.handbagText()).isEqualTo("Handbags");
 
     }
 
-//    @Category(SignInOnFooter.class)
+}
+
+//    @Category(HomeOnFooter.class)
 //    @Test
-//    public void signInOnFooter() {
+//    public void homeFooter(){
 //        FooterPage footerPage = new FooterPage(driver);
-//        footerPage.clickSignIn();
+//        footerPage.clickHomeButtonOnFooter();
 //
-//        CustomLogonPage customLogonPage = new CustomLogonPage(driver);
-//        assertThat(customLogonPage.isRegisteredCustomerSection()).isEqualTo("Registered customer");
-//        assertThat(customLogonPage.isNewCustomerSection()).isEqualTo("New customer");
+//        MainPage mainPage = new MainPage(driver);
+//        assertThat(mainPage.featuredItemsText()).isEqualTo("Featured items");
+//
 //    }
 
-}

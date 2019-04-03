@@ -34,7 +34,7 @@ public class BagGenerator extends RandomGenerator {
     }
 
 
-    public  List<Bag> listCategoryBag(String category) {
+    public static List<Bag> listCategoryBag(String category) {
         List<Bag> bagCategoryList = new ArrayList<>();
         for (Bag bag : bagList) {
             if (bag.getCategory().equals(category)) {
@@ -44,7 +44,7 @@ public class BagGenerator extends RandomGenerator {
         return bagCategoryList;
     }
 
-    public  List<Bag> listCollectionBag(String category, String collection) {
+    public  static List<Bag> listCollectionBag(String category, String collection) {
         List<Bag> bagCollectionList = new ArrayList<>();
         for (Bag bag : bagList) {
             if (bag.getCategory().equals(category) && bag.getCollection().equals(collection)) {
@@ -55,18 +55,18 @@ public class BagGenerator extends RandomGenerator {
     }
 
     public static Bag generateRandomBag() {
-        Bag randomBag = bagList.get(generateRandomNumber(0, (bagList.size()-1)));
+        Bag randomBag = bagList.get(generateRandomNumber(0, (bagList.size())));
         return randomBag;
     }
 
-    public  Bag generateCategoryRandomBag(String category) {
-        Bag randomCategoryBag = listCategoryBag(category).get(generateRandomNumber(0, (listCategoryBag(category).size()-1)));
+    public static Bag generateCategoryRandomBag(String category) {
+        Bag randomCategoryBag = listCategoryBag(category).get(generateRandomNumber(0, (listCategoryBag(category).size())));
         return randomCategoryBag;
     }
 
-    public  Bag generateCollectionRandomBag(String category, String collection) {
+    public static Bag generateCollectionRandomBag(String category, String collection) {
         Bag randomCollectonBag = listCollectionBag(category, collection).get(generateRandomNumber(0,
-                (listCollectionBag(category, collection).size()-1)));
+                (listCollectionBag(category, collection).size())));
         return randomCollectonBag;
     }
 }
