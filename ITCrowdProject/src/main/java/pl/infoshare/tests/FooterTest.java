@@ -38,6 +38,18 @@ public class FooterTest {
     }
 
 
+
+    @Category(HandbagsOnFooter.class)
+    @Test
+    public void handbagsOnFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickHandbagsButtonOnFooter();
+
+        HandbagCataloguePage handbagText = new HandbagCataloguePage(driver);
+        assertThat(handbagText.handbagText()).isEqualTo("Handbags");
+
+    }
+
     @Category(LaptopBagsOnFooter.class)
     @Test
     public void LaptopBagsOnFooter(){

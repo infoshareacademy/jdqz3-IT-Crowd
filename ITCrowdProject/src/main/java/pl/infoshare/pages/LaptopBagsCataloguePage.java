@@ -3,8 +3,9 @@ package pl.infoshare.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
+import pl.infoshare.pages.Sections.ShippingCart;
 import pl.infoshare.elements.Label;
-import pl.infoshare.pages.BasePage;
+
 
 
 public class LaptopBagsCataloguePage extends BasePage {
@@ -17,6 +18,7 @@ public class LaptopBagsCataloguePage extends BasePage {
     private By bag;
     private By laptopBagsTekst = By.xpath("//h2[@class='shop-banner-title lead']");
     private Label laptopBags;
+    private ShippingCart shippingCart;
 
     public LaptopBagsCataloguePage(WebDriver driver){
         super(driver);
@@ -24,13 +26,17 @@ public class LaptopBagsCataloguePage extends BasePage {
         this.driver.get(this.url);
     }
 
+
+
     public void addToCart(){
         this.addToCart.click();
     }
+    public void clickOnShipping() {
+        shippingCart = new ShippingCart(this.driver);
+        this.shippingCart.getShippingCart();
+    }
 
     public void checkout(){
-        this.shoppingCart = new Button(this.driver, this.shippingCartLink);
-        this.shoppingCart.safeClick();
         this.chackoutLink= By.cssSelector("li.checkout-bg a");
         this.checkout= new Button(this.driver, this.chackoutLink);
         checkout.clickWithJs();
