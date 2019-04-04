@@ -42,7 +42,7 @@ public class BillingInformationValidationTest {
         basePage.close();
     }
 
-    @Category(Purchase.class)
+    @Category(ValidateNameIsRequired.class)
     @Test
     public void validateNameIsEmpty() {
         MainPage mainPage = new MainPage(driver);
