@@ -30,7 +30,7 @@ public class CheckoutPage extends BasePage{
     private TextInput phoneNumber;
     private By submitOrderButton;
     private Button submitOrder;
-    private By validateField = By.cssSelector("#formErrorMessage");
+    private By validateField = By.xpath("//*[@id=\"formErrorMessage\"]/strong/font");
     private Label validate;
 
     public CheckoutPage(WebDriver driver){
@@ -75,10 +75,9 @@ public class CheckoutPage extends BasePage{
         this.submitOrder.safeClick();
     }
 
-    public Label validateResult(){
+    public String validateResult(){
         this.validate = new Label (this.driver, this.validateField);
-        this.validate.getText();
-        return validate;
+        return this.validate.getText();
     }
 
 }
