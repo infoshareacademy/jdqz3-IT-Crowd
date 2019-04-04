@@ -42,7 +42,7 @@ public class PurchaseTest {
         basePage.close();
     }
 
-    @Category(Purchase.class)
+    @Category(PurchaseTests.class)
     @Test
     public void purchase() {
         MainPage mainPage = new MainPage(driver);
