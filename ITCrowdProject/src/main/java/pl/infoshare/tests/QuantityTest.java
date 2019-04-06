@@ -6,12 +6,15 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.infoshare.categories.PurchaseTests;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.generators.BagGenerator;
 import pl.infoshare.pages.*;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,10 +36,10 @@ public class QuantityTest {
 
     }
 
-    @After
-    public void closeBrowser() {
-        basePage.close();
-    }
+//    @After
+//    public void closeBrowser() {
+//        basePage.close();
+//    }
 
 
     @Test
@@ -51,11 +54,12 @@ public class QuantityTest {
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.inputQuantity();
+        reviewYourOrderPage.recalculateButtonClick();
 
+        //WebDriverWait wait = new WebDriverWait(this.driver, 10);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       
 
-
-//        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-
-//        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+        assertThat(reviewYourOrderPage.getTotal().getText()).isEqualTo("$234.00");
     }
 }

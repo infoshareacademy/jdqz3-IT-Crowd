@@ -26,6 +26,9 @@ public class ReviewYourOrderPage extends BasePage {
     private By quantityText = By.cssSelector(".input-small[name='quantity']");
     private TextInput quantityInput;
 
+    private By recalculateLink = By.xpath("//a[contains(text(),'Recalculate')]");
+    private Button recalculate;
+
 
     public ReviewYourOrderPage(WebDriver driver){
         super(driver);
@@ -72,6 +75,12 @@ public class ReviewYourOrderPage extends BasePage {
         this.quantityInput = new TextInput(this.driver, this.quantityText);
         this.quantityInput.sendKeys("3");
         return quantityInput;
+    }
+
+    public Button recalculateButtonClick(){
+        this.recalculate = new Button(this.driver, this.recalculateLink);
+        this.recalculate.safeClick();
+        return recalculate;
     }
 
 }
