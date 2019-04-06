@@ -57,6 +57,10 @@ public class CheckoutPage extends BasePage{
         this.firstName.sendKeys(user.getFirstname());
     }
 
+    public void sectionLastName(RegisteredUser user){
+        this.lastName.sendKeys(user.getLastname());
+    }
+
     public void fillInSectionCountryState(RegisteredUser user){
         this.countrySelect=By.cssSelector("select[name='customer.billing.country']");
         this.country = new Select(this.driver, this.countrySelect);

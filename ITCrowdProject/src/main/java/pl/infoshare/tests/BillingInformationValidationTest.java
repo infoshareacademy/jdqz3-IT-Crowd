@@ -78,6 +78,25 @@ public class BillingInformationValidationTest {
         assertThat(checkoutPage.validateResult()).isEqualTo("Last name is required");
     }
 
+    @Category(ValidateStreetAddressIsRequired.class)
+    @Test
+    public void validateStreetAddressIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        assertThat(checkoutPage.validateResult()).isEqualTo("Street address is required");
+    }
 
 
 }
