@@ -33,6 +33,9 @@ public class CheckoutPage extends BasePage{
     private By validateField = By.xpath("//*[@id=\"formErrorMessage\"]/strong/font");
     private Label validate;
 
+    private By quantity = By.id(".quantity");
+    private TextInput quantityInput;
+
     public CheckoutPage(WebDriver driver){
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/order/checkout.html";
@@ -87,6 +90,12 @@ public class CheckoutPage extends BasePage{
         this.validate = new Label (this.driver, this.validateField);
         return this.validate.getText();
     }
+
+    public void inputQuantity(){
+        this.quantityInput = new TextInput(this.driver, this.quantity);
+        this.quantityInput.sendKeys("3");
+    }
+
 
 }
 
