@@ -10,7 +10,7 @@ import pl.infoshare.tests.PurchaseTest;
 import pl.infoshare.tests.FooterTest;
 
 @RunWith(Categories.class)
-@Categories.IncludeCategory({PurchaseTests.class, AddToCartTests.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class, LaptopBagsOnFooter.class})
+@Categories.IncludeCategory({PurchaseTests.class, AddToCartTests.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class, LaptopBagsOnFooter.class})   
 @Suite.SuiteClasses({PurchaseTest.class, FooterTest.class})
 public class ShopizerTestSuite {
 }
