@@ -49,8 +49,8 @@ public class QuantityTest {
         handbagCataloguePage.clickOnShipping();
         handbagCataloguePage.checkout();
 
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.inputQuantity();
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.inputQuantity();
 
 
 
