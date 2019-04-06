@@ -59,5 +59,25 @@ public class BillingInformationValidationTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         assertThat(checkoutPage.validateResult()).isEqualTo("First name is required");
     }
+    @Category(ValidateLastnameIsRequired.class)
+    @Test
+    public void validateLastnameIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        assertThat(checkoutPage.validateResult()).isEqualTo("Last name is required");
+    }
+
+
 
 }
