@@ -3,6 +3,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
 
+import java.util.Set;
+
 public class FooterPage extends BasePage {
     private By signInLink=By.cssSelector("div.footer-area.ptb-80 a[href='/shop/customer/customLogon.html']");
     private Button signInButton;
@@ -10,6 +12,8 @@ public class FooterPage extends BasePage {
     private Button handbagsButton;
     private By laptopBagsLink = By.cssSelector(".usefull-link li:nth-of-type(4) .name");
     private Button laptopBagsButton;
+    private By facebookLink = By.xpath("//i[@class='fa fa-facebook']");
+    private Button facebookButton;
 
     public FooterPage(WebDriver driver){
         super(driver);
@@ -18,6 +22,7 @@ public class FooterPage extends BasePage {
         this.signInButton=new Button(this.driver, this.signInLink);
         this.handbagsButton=new Button(this.driver, this.handbagsLink);
         this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
+        this.facebookButton = new Button(this.driver, this.facebookLink);
     }
     public void clickSignIn(){
         this.signInButton.click();
@@ -30,5 +35,15 @@ public class FooterPage extends BasePage {
 
     public void clickLaptopBagsButtonOnFuter(){
         this.laptopBagsButton.click();
+    }
+    public void clickFacebookButtonOnFooter(){
+        this.facebookButton.click();
+        String currentWindow = this.driver.getWindowHandle();
+        Set<String> availabeWindows = this.driver.getWindowHandles();
+        for (String window : availabeWindows){
+            if (!window.equals(currentWindow)){
+                driver.switchTo().window(window);
+            }
+        }
     }
 }

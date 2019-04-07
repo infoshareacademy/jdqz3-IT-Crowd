@@ -11,6 +11,9 @@ import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.*;
+import pl.infoshare.pages.thirdParties.FacebookPage;
+
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,10 +35,10 @@ public class FooterTest {
         this.user = new RegisteredUser(true);
     }
 
-    @After
-    public void closeBrowser() {
-        basePage.close();
-    }
+//    @After
+//    public void closeBrowser() {
+//        basePage.close();
+//    }
 
 
 
@@ -58,7 +61,15 @@ public class FooterTest {
 
         LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
         assertThat(laptopBagsCataloguePage.laptopBagTekst()).isEqualTo("Laptop bags");
+    }
 
+    @Category(FacebookOnFooter.class)
+    @Test
+    public void facebookOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickFacebookButtonOnFooter();
 
+        FacebookPage facebookPage = new FacebookPage(driver);
+        assertThat(facebookPage.facebookText()).isEqualTo("Facebook");
     }
 }
