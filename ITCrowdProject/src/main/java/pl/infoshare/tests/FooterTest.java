@@ -38,7 +38,6 @@ public class FooterTest {
     }
 
 
-
     @Category(HandbagsOnFooter.class)
     @Test
     public void handbagsOnFooter() {
@@ -49,9 +48,10 @@ public class FooterTest {
         assertThat(handbagText.handbagText()).isEqualTo("Handbags");
 
     }
+
     @Category(HomeOnFooter.class)
     @Test
-    public void homeFooter(){
+    public void homeFooter() {
         FooterPage footerPage = new FooterPage(driver);
         footerPage.clickHomeButtonOnFooter();
 
@@ -62,7 +62,7 @@ public class FooterTest {
 
     @Category(LaptopBagsOnFooter.class)
     @Test
-    public void LaptopBagsOnFooter(){
+    public void LaptopBagsOnFooter() {
         FooterPage footerPage = new FooterPage(driver);
         footerPage.clickLaptopBagsButtonOnFuter();
 
@@ -70,5 +70,14 @@ public class FooterTest {
         assertThat(laptopBagsCataloguePage.laptopBagTekst()).isEqualTo("Laptop bags");
 
 
+    }
+    @Category(ContactUsOnFooter.class)
+    @Test
+    public void contactUsFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickContactUsButtonOnFooter();
+
+        ContactUsPage contactUsPage = new ContactUsPage(driver);
+        assertThat(contactUsPage.verifyContactUsText()).isEqualTo("Contact us");
     }
 }

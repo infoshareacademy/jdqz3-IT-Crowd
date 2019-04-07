@@ -4,8 +4,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.infoshare.categories.PurchaseTests;
 import pl.infoshare.dataModels.Address;
@@ -13,6 +18,7 @@ import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.generators.BagGenerator;
 import pl.infoshare.pages.*;
+import pl.infoshare.pages.waitForPage.WaitForPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,6 +33,8 @@ public class QuantityTest {
     private Bag randomBag;
     private Bag randomBagNext;
     private Bag randomLaptopBag;
+    private Object browser;
+    private WebElement __document;
 
     @Before
     public void startBrowser() {
@@ -56,9 +64,9 @@ public class QuantityTest {
         reviewYourOrderPage.inputQuantity();
         reviewYourOrderPage.recalculateButtonClick();
 
-        //WebDriverWait wait = new WebDriverWait(this.driver, 10);
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-       
+        WaitForPage waitForPage = new WaitForPage(driver);
+        waitForPage.waitForPage();
+
 
         assertThat(reviewYourOrderPage.getTotal().getText()).isEqualTo("$234.00");
     }
