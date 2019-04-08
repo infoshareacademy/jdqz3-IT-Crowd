@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
 import pl.infoshare.pages.Sections.ShippingCart;
+import pl.infoshare.elements.Label;
 
 
 public class HandbagCataloguePage extends BasePage {
@@ -13,6 +14,10 @@ public class HandbagCataloguePage extends BasePage {
     private By chackoutLink;
     private Button checkout;
     private By randomBag;
+    private By handbagsText;
+    private Label handbags;
+
+
     private ShippingCart shippingCart;
 
     public HandbagCataloguePage(WebDriver driver){
@@ -40,5 +45,12 @@ public class HandbagCataloguePage extends BasePage {
     public void getRandomBag(String name){
         randomBag = By.cssSelector("#productsContainer [item-name='"+name+"'] div.store-btn-addtocart");
         this.addToCart = new Button(this.driver, this.randomBag);
+    }
+
+
+    public String handbagText() {
+        this.handbagsText=By.xpath("//h2[@class='shop-banner-title lead']");
+        this.handbags = new Label(this.driver, this.handbagsText);
+        return this.handbags.getText();
     }
 }
