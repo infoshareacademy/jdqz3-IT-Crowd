@@ -33,6 +33,7 @@ public class CheckoutPage extends BasePage{
     private By validateField = By.xpath("//*[@id=\"formErrorMessage\"]/strong/font");
     private Label validate;
 
+
     public CheckoutPage(WebDriver driver){
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/order/checkout.html";
@@ -57,8 +58,20 @@ public class CheckoutPage extends BasePage{
         this.firstName.sendKeys(user.getFirstname());
     }
 
+
+    public void sectionStreetAddress(RegisteredUser user){
+        this.street.sendKeys(user.getAddress().getStreetAddress());
+    }
+
+
     public void sectionLastName(RegisteredUser user){
         this.lastName.sendKeys(user.getLastname());
+    }
+
+    public void sectionState(RegisteredUser user){
+        this.stateInput=By.cssSelector("input[name='customer.billing.stateProvince']");
+        this.state= new TextInput(this.driver, this.stateInput);
+        this.state.sendKeys(user.getAddress().getState());
     }
 
     public void fillInSectionCountryState(RegisteredUser user){
@@ -87,6 +100,7 @@ public class CheckoutPage extends BasePage{
         this.validate = new Label (this.driver, this.validateField);
         return this.validate.getText();
     }
+
 
 }
 

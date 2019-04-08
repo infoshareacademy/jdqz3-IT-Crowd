@@ -99,4 +99,47 @@ public class BillingInformationValidationTest {
     }
 
 
+
+    @Test
+    public void validateStateIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        assertThat(checkoutPage.validateResult()).isEqualTo("State / Province is required");
+    }
+
+    @Test
+    public void validatePostalCodeIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        checkoutPage.sectionState(user);
+        assertThat(checkoutPage.validateResult()).isEqualTo("Postal code is required");
+    }
+
+
 }
