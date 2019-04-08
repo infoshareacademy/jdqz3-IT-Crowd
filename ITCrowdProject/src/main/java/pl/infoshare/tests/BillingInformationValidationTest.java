@@ -99,7 +99,7 @@ public class BillingInformationValidationTest {
     }
 
 
-
+    @Category(ValidateStateIsRequired.class)
     @Test
     public void validateStateIsEmpty() {
         MainPage mainPage = new MainPage(driver);
@@ -120,6 +120,7 @@ public class BillingInformationValidationTest {
         assertThat(checkoutPage.validateResult()).isEqualTo("State / Province is required");
     }
 
+    @Category(ValidatePostalCodeIsRequired.class)
     @Test
     public void validatePostalCodeIsEmpty() {
         MainPage mainPage = new MainPage(driver);
