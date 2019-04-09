@@ -44,10 +44,10 @@ public class QuantityTest {
 
     }
 
-//    @After
-//    public void closeBrowser() {
-//        basePage.close();
-//    }
+    @After
+    public void closeBrowser() {
+        basePage.close();
+    }
 
 
     @Test
