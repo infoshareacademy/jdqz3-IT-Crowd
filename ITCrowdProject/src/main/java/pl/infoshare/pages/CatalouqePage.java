@@ -3,7 +3,7 @@ package pl.infoshare.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
-import pl.infoshare.pages.Sections.ShippingCart;
+import pl.infoshare.pages.sections.ShippingCart;
 
 
 public class CatalouqePage extends BasePage {

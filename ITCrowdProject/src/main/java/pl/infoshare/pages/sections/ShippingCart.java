@@ -1,4 +1,4 @@
-package pl.infoshare.pages.Sections;
+package pl.infoshare.pages.sections;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

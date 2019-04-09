@@ -35,4 +35,5 @@ public class MainPage extends BasePage {
         this.featuredItems = new Label(this.driver, this.featuredItemsText);
         return this.featuredItems.getText();
     }
+
 }
