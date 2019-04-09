@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pl.infoshare.categories.HandbagsOnFooter;
 import pl.infoshare.categories.ValidateLoginFieldRequired;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
@@ -14,9 +13,6 @@ import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.BasePage;
 import pl.infoshare.pages.CustomLogonPage;
 import pl.infoshare.pages.FooterPage;
-import pl.infoshare.pages.HandbagCataloguePage;
-import pl.infoshare.pages.waitForPage.WaitForLoginPage;
-import pl.infoshare.pages.waitForPage.WaitForPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,10 +32,10 @@ public class LoginTest {
         this.user = new RegisteredUser(true);
     }
 
-//    @After
-//    public void closeBrowser() {
-//        basePage.close();
-//    }
+    @After
+    public void closeBrowser() {
+        basePage.close();
+    }
 
 
     @Category(ValidateLoginFieldRequired.class)
@@ -51,10 +47,7 @@ public class LoginTest {
 
         CustomLogonPage customLogonPage = new CustomLogonPage(driver);
         customLogonPage.clickSignInButtonOnCustomLogonPage();
-//        customLogonPage.LoginErrorValidationOnCustomLogonPage();
 
-//        WaitForLoginPage waitForLoginPage = new WaitForLoginPage(driver);
-//        waitForLoginPage.waitForLoginPage();
 
         assertThat(customLogonPage.LoginErrorValidationOnCustomLogonPage()).isEqualTo("Login Failed. Username or Password is incorrect.");
 
