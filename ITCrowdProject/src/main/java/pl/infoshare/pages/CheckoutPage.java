@@ -45,6 +45,7 @@ public class CheckoutPage extends BasePage{
         this.phoneNumber = new TextInput(this.driver, this.phoneNumberInput);
         this.email = new TextInput(this.driver, this.emailInput);
         this.validate = new Label(this.driver,this.validateField);
+
     }
 
     public void sectionFullName(RegisteredUser user){
@@ -88,6 +89,13 @@ public class CheckoutPage extends BasePage{
         this.postal.sendKeys(user.getAddress().getPostalCode());
         this.email.sendKeys(user.getEmail());
         this.phoneNumber.sendKeys(user.getPhoneNumber());
+    }
+
+    public void sectionPostalCode(RegisteredUser user){
+        this.postalCodeInput=By.cssSelector("input[name='customer.billing.postalCode']");
+        this.postal = new TextInput(this.driver, this.postalCodeInput);
+        this.postal.sendKeys(user.getAddress().getPostalCode());
+
     }
 
     public void submitOrder() {

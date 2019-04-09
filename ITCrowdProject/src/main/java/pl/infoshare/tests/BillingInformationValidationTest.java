@@ -121,6 +121,7 @@ public class BillingInformationValidationTest {
     }
 
     @Category(ValidatePostalCodeIsRequired.class)
+
     @Test
     public void validatePostalCodeIsEmpty() {
         MainPage mainPage = new MainPage(driver);
@@ -139,7 +140,31 @@ public class BillingInformationValidationTest {
         checkoutPage.sectionLastName(user);
         checkoutPage.sectionStreetAddress(user);
         checkoutPage.sectionState(user);
+
         assertThat(checkoutPage.validateResult()).isEqualTo("Postal code is required");
+    }
+
+    @Test
+    public void validateEmailAddressIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        checkoutPage.sectionState(user);
+        checkoutPage.sectionPostalCode(user);
+
+        assertThat(checkoutPage.validateResult()).isEqualTo("Email address is required");
     }
 
 
