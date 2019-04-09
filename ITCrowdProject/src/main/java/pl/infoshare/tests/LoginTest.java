@@ -7,6 +7,7 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.infoshare.categories.HandbagsOnFooter;
+import pl.infoshare.categories.ValidateLoginFieldRequired;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
@@ -41,7 +42,7 @@ public class LoginTest {
 //    }
 
 
-//    @Category(HandbagsOnFooter.class)
+    @Category(ValidateLoginFieldRequired.class)
     @Test
     public void LoginEmptyFieldsValidation() {
         FooterPage footerPage = new FooterPage(driver);
@@ -50,10 +51,10 @@ public class LoginTest {
 
         CustomLogonPage customLogonPage = new CustomLogonPage(driver);
         customLogonPage.clickSignInButtonOnCustomLogonPage();
-        //customLogonPage.LoginErrorValidationOnCustomLogonPage();
+//        customLogonPage.LoginErrorValidationOnCustomLogonPage();
 
-        WaitForLoginPage waitForLoginPage = new WaitForLoginPage(driver);
-        waitForLoginPage.waitForLoginPage();
+//        WaitForLoginPage waitForLoginPage = new WaitForLoginPage(driver);
+//        waitForLoginPage.waitForLoginPage();
 
         assertThat(customLogonPage.LoginErrorValidationOnCustomLogonPage()).isEqualTo("Login Failed. Username or Password is incorrect.");
 

@@ -9,9 +9,9 @@ import pl.infoshare.elements.TextInput;
 
 public class CustomLogonPage extends BasePage {
 
-    private By customerEmailAddressElement=By.id("#signin_userName");
+    private By customerEmailAddressElement=By.cssSelector("#signin_userName");
     private TextInput customerEmailAddress;
-    private By passwordElement=By.id("#signin_password");
+    private By passwordElement=By.cssSelector("#signin_password");
     private TextInput password;
     private By signInElement=By.cssSelector("#genericLogin-button");
     private Button signIn;
@@ -21,7 +21,7 @@ public class CustomLogonPage extends BasePage {
     private Label registeredCustomer;
     private By newCustomerElement=By.xpath("//div[2]/div/h3");
     private Label newCustomer;
-    private By loginErrorText = By.id("#loginError");
+    private By loginErrorText = By.cssSelector("#loginError");
     private Label loginErrorValidation;
 
     public CustomLogonPage(WebDriver driver){
@@ -44,6 +44,7 @@ public class CustomLogonPage extends BasePage {
         return this.newCustomer.getText();
     }
     public void clickSignInButtonOnCustomLogonPage() {
+        this.signIn = new Button(this.driver, this.signInElement);
         this.signIn.click();
     }
     public String LoginErrorValidationOnCustomLogonPage(){
