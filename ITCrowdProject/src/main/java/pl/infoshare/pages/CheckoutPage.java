@@ -69,7 +69,7 @@ public class CheckoutPage extends BasePage{
     public void submitOrder() {
         this.submitOrderButton=By.id("submitOrder");
         this.submitOrder = new Button(this.driver, this.submitOrderButton);
-        this.submitOrder.safeClick();
+        this.submitOrder.clickWithJs();
     }
 }
 

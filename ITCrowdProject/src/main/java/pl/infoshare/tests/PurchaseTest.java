@@ -1,8 +1,7 @@
 package pl.infoshare.tests;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.*;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,6 +24,11 @@ public class PurchaseTest {
     private Bag randomBag;
     private Bag randomBagNext;
     private Bag randomLaptopBag;
+
+    @BeforeClass
+    public static void beforeAll(){
+        WebDriverManager.chromedriver().setup();
+    }
 
     @Before
     public void startBrowser() {
@@ -60,8 +64,14 @@ public class PurchaseTest {
         checkoutPage.fillInSectionCountryState(user);
         checkoutPage.submitOrder();
 
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+        try {
+            Thread.sleep(5000);
+            OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+            assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+        } catch (Throwable error) {
+            Assert.fail("Timeout waiting is completed");
+        }
+
     }
 
         @Category(AddToCartTest.class)
@@ -151,7 +161,12 @@ public class PurchaseTest {
         checkoutPage.fillInSectionCountryState(user);
         checkoutPage.submitOrder();
 
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+        try {
+            Thread.sleep(5000);
+            OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+            assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+        } catch (Throwable error) {
+            Assert.fail("Timeout waiting is completed");
+        }
     }
 }

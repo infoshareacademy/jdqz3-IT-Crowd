@@ -13,6 +13,7 @@ public class ShippingCart {
     }
 
     public void getShippingCart(){
+        this.shippingCart.scrollWithJs();
         this.shippingCart.safeClick();
     }
 }

@@ -1,8 +1,7 @@
 package pl.infoshare.tests;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.*;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,6 +24,11 @@ public class FooterTest {
     private Bag randomBagNext;
     private Bag randomLaptopBag;
 
+    @BeforeClass
+    public static void beforeAll(){
+        WebDriverManager.chromedriver().setup();
+    }
+
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
@@ -37,8 +41,6 @@ public class FooterTest {
         basePage.close();
     }
 
-
-
     @Category(HandbagsOnFooter.class)
     @Test
     public void handbagsOnFooter() {
@@ -47,10 +49,27 @@ public class FooterTest {
 
         HandbagCataloguePage handbagText = new HandbagCataloguePage(driver);
         assertThat(handbagText.handbagText()).isEqualTo("Handbags");
-
     }
 
+    @Category(SignInOnFooter.class)
+    @Test
+    public void signInOnFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickSignIn();
+            CustomLogonPage customLogonPage = new CustomLogonPage(driver);
+            assertThat(customLogonPage.isRegisteredCustomerSection()).isEqualTo("Registered customer");
+            assertThat(customLogonPage.isNewCustomerSection()).isEqualTo("New customer");
+    }
 
+    @Category(BeachBagsOnFooter.class)
+    @Test
+    public void beachBagsOnFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickBeachBags();
+
+        BeachBagsCataloguePage beachBagsCataloguePage = new BeachBagsCataloguePage(driver);
+        assertThat(beachBagsCataloguePage.getTitlePage()).isEqualTo("Beach bags");
+    }
 
 }
 

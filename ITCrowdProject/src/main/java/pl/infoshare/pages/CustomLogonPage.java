@@ -9,14 +9,6 @@ import pl.infoshare.elements.TextInput;
 
 public class CustomLogonPage extends BasePage {
 
-    private By customerEmailAddressElement=By.id("#signin_userName");
-    private TextInput customerEmailAddress;
-    private By passwordElement=By.id("#signin_password");
-    private TextInput password;
-    private By signInElement=By.id("#genericLogin-button");
-    private Button signIn;
-    private By registerElement=By.cssSelector(".login-btn[href='/shop/customer/registration.html']");
-    private Button register;
     private By registeredCustomerElement=By.xpath("//div[1]/div[1]/h3");
     private Label registeredCustomer;
     private By newCustomerElement=By.xpath("//div[2]/div/h3");
@@ -26,10 +18,6 @@ public class CustomLogonPage extends BasePage {
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/customer/customLogon.html";
         this.driver.get(this.url);
-        this.customerEmailAddress = new TextInput(this.driver, this.customerEmailAddressElement);
-        this.password = new TextInput(this.driver, this.passwordElement);
-        this.signIn = new Button(this.driver, this.signInElement);
-        this.register = new Button(this.driver, this.registerElement);
         this.registeredCustomer = new Label(this.driver, this.registeredCustomerElement);
         this.newCustomer = new Label(this.driver, this.newCustomerElement);
     }

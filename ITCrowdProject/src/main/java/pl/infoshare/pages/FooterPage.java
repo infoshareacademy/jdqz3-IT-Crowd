@@ -9,6 +9,9 @@ public class FooterPage extends BasePage {
     private Button signInButton;
     private By handbagsLink=By.xpath("//span[contains(text(),'Handbags')]");
     private Button handbagsButton;
+    private By beachBagsElement=By.cssSelector("div.footer-area.ptb-80 a[href='/shop/category/beachbags.html/ref=c:50']");
+    private Button beachBags;
+
 
     public FooterPage(WebDriver driver){
         super(driver);
@@ -16,6 +19,7 @@ public class FooterPage extends BasePage {
         this.driver.get(this.url);
         this.signInButton=new Button(this.driver, this.signInLink);
         this.handbagsButton=new Button(this.driver, this.handbagsLink);
+        this.beachBags=new Button(this.driver, this.beachBagsElement);
     }
 
     public void clickSignIn(){
@@ -25,6 +29,8 @@ public class FooterPage extends BasePage {
     public void clickHandbagsButtonOnFooter(){
         this.handbagsButton.click();
     }
+
+    public void clickBeachBags(){ this.beachBags.click(); }
 
 
 }
