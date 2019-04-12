@@ -11,12 +11,12 @@ import pl.infoshare.elements.Label;
 public class LaptopBagsCataloguePage extends BasePage {
 
     private Button addToCart;
-    private By shippingCartLink= By.cssSelector("#miniCartSummary a span");
+    private By shippingCartLink= By.id("#miniCartSummary a span");
     private Button shoppingCart;
     private By chackoutLink;
     private Button checkout;
     private By bag;
-    private By laptopBagsTekst = By.xpath("//h2[@class='shop-banner-title lead']");
+    private By laptopBagsText = By.xpath("//h2[@class='shop-banner-title lead']");
     private Label laptopBags;
     private ShippingCart shippingCart;
 
@@ -47,9 +47,9 @@ public class LaptopBagsCataloguePage extends BasePage {
         this.addToCart = new Button(this.driver, this.bag);
     }
 
-    public String laptopBagTekst(){
-        this.laptopBagsTekst = By.xpath("//h2[@class='shop-banner-title lead']");
-        this. laptopBags= new Label(this.driver, this.laptopBagsTekst);
+    public String laptopBagText(){
+        this.laptopBagsText = By.xpath("//h2[@class='shop-banner-title lead']");
+        this. laptopBags= new Label(this.driver, this.laptopBagsText);
         return this.laptopBags.getText();
     }
 }
