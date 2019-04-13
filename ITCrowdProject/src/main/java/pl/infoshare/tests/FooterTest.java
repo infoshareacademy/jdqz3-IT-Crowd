@@ -57,7 +57,7 @@ public class FooterTest {
         footerPage.clickLaptopBagsButtonOnFooter();
 
         LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
-        assertThat(laptopBagsCataloguePage.laptopBagTekst()).isEqualTo("Laptop bags");
+        assertThat(laptopBagsCataloguePage.laptopBagText()).isEqualTo("Laptop bags");
 
 
     }

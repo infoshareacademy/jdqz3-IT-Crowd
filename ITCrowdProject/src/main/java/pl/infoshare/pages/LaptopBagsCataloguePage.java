@@ -11,7 +11,7 @@ import pl.infoshare.elements.Label;
 public class LaptopBagsCataloguePage extends BasePage {
 
     private Button addToCart;
-    private By shippingCartLink= By.id("#miniCartSummary a span");
+    private By shippingCartLink= By.cssSelector("#miniCartSummary a span");
     private Button shoppingCart;
     private By chackoutLink;
     private Button checkout;

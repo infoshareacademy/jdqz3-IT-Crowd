@@ -9,11 +9,11 @@ import pl.infoshare.elements.TextInput;
 
 public class CustomLogonPage extends BasePage {
 
-    private By customerEmailAddressElement=By.id("#signin_userName");
+    private By customerEmailAddressElement=By.cssSelector("#signin_userName");
     private TextInput customerEmailAddress;
-    private By passwordElement=By.id("#signin_password");
+    private By passwordElement=By.cssSelector("#signin_password");
     private TextInput password;
-    private By signInElement=By.id("#genericLogin-button");
+    private By signInElement=By.cssSelector("#genericLogin-button");
     private Button signIn;
     private By registerElement=By.cssSelector(".login-btn[href='/shop/customer/registration.html']");
     private Button register;
