@@ -33,7 +33,6 @@ public class PurchaseTest {
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
         this.randomBag = BagGenerator.generateRandomBag();
