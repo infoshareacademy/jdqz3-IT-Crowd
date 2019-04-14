@@ -1,5 +1,4 @@
 package pl.infoshare.pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
@@ -9,6 +8,8 @@ public class FooterPage extends BasePage {
     private Button signInButton;
     private By handbagsLink=By.xpath("//span[contains(text(),'Handbags')]");
     private Button handbagsButton;
+    private By laptopBagsLink = By.cssSelector(".usefull-link li:nth-of-type(4) .name");
+    private Button laptopBagsButton;
 
     public FooterPage(WebDriver driver){
         super(driver);
@@ -16,8 +17,8 @@ public class FooterPage extends BasePage {
         this.driver.get(this.url);
         this.signInButton=new Button(this.driver, this.signInLink);
         this.handbagsButton=new Button(this.driver, this.handbagsLink);
+        this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
     }
-
     public void clickSignIn(){
         this.signInButton.click();
     }
@@ -27,4 +28,7 @@ public class FooterPage extends BasePage {
     }
 
 
+    public void clickLaptopBagsButtonOnFooter(){
+        this.laptopBagsButton.click();
+    }
 }
