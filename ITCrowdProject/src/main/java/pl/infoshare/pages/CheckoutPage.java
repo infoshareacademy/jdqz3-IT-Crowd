@@ -114,7 +114,7 @@ public class CheckoutPage extends BasePage{
     }
 
     public void sectionEmail(RegisteredUser user){
-        this.email.sendKeys(user.getPhoneNumber());
+        this.email.sendKeys(user.getEmail());
     }
 }
 
