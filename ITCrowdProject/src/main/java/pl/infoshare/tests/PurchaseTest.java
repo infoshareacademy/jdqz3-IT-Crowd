@@ -6,6 +6,10 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.infoshare.categories.AddToCartNextRandomBagTest;
+import pl.infoshare.categories.AddToCartRandomBagTest;
+import pl.infoshare.categories.AddToCartTests;
+import pl.infoshare.categories.PurchaseTests;
 import pl.infoshare.categories.*;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
@@ -29,7 +33,6 @@ public class PurchaseTest {
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
         this.randomBag = BagGenerator.generateRandomBag();
@@ -42,7 +45,7 @@ public class PurchaseTest {
         basePage.close();
     }
 
-    @Category(Purchase.class)
+    @Category(PurchaseTests.class)
     @Test
     public void purchase() {
         MainPage mainPage = new MainPage(driver);
