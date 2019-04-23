@@ -71,6 +71,14 @@ public class FooterTest {
         assertThat(beachBagsCataloguePage.getTitlePage()).isEqualTo("Beach bags");
     }
 
+    @Category(LaptopBagsOnFooter.class)
+    @Test
+    public void LaptopBagsOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickLaptopBagsButtonOnFooter();
+
+        LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
+        assertThat(laptopBagsCataloguePage.laptopBagText()).isEqualTo("Laptop bags");
+    }
+
 }
-
-
