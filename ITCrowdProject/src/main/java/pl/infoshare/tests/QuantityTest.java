@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.infoshare.categories.PurchaseTests;
+import pl.infoshare.categories.QuantityIncreaseTest;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
@@ -50,8 +51,9 @@ public class QuantityTest {
     }
 
 
+    @Category(QuantityIncreaseTest.class)
     @Test
-    public void quantity() {
+    public void quantityIncrease() {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
 
@@ -61,7 +63,7 @@ public class QuantityTest {
         handbagCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
-        reviewYourOrderPage.inputQuantity();
+        reviewYourOrderPage.inputIncreaseQuantity();
         reviewYourOrderPage.recalculateButtonClick();
 
         WaitForPage waitForPage = new WaitForPage(driver);
@@ -69,5 +71,32 @@ public class QuantityTest {
 
 
         assertThat(reviewYourOrderPage.getTotal().getText()).isEqualTo("$234.00");
+    }
+
+    @Category(QuantityIncreaseTest.class)
+    @Test
+    public void quantityDecrease() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.inputIncreaseQuantity();
+        reviewYourOrderPage.recalculateButtonClick();
+
+        WaitForPage waitForPage = new WaitForPage(driver);
+        waitForPage.waitForPage();
+
+        reviewYourOrderPage.inputDecreaseQuantity();
+        reviewYourOrderPage.recalculateButtonClick();
+
+        waitForPage.waitForPage();
+
+
+        assertThat(reviewYourOrderPage.getTotal().getText()).isEqualTo("$156.00");
     }
 }

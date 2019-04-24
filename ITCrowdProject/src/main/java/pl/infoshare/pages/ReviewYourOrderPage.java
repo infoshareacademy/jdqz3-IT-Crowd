@@ -71,7 +71,7 @@ public class ReviewYourOrderPage extends BasePage {
         return totalsTotal;
     }
 
-    public TextInput inputQuantity(){
+    public TextInput inputIncreaseQuantity(){
         this.quantityInput = new TextInput(this.driver, this.quantityText);
         this.quantityInput.sendKeys("3");
         return quantityInput;
@@ -81,6 +81,11 @@ public class ReviewYourOrderPage extends BasePage {
         this.recalculate = new Button(this.driver, this.recalculateLink);
         this.recalculate.safeClick();
         return recalculate;
+    }
+    public TextInput inputDecreaseQuantity(){
+        this.quantityInput = new TextInput(this.driver, this.quantityText);
+        this.quantityInput.sendKeys("2");
+        return quantityInput;
     }
 
 }
