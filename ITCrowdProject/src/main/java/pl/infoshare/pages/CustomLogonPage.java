@@ -24,6 +24,7 @@ public class CustomLogonPage extends BasePage {
     private By loginErrorText = By.cssSelector("#loginError");
     private Label loginErrorValidation;
 
+
     public CustomLogonPage(WebDriver driver){
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/customer/customLogon.html";
@@ -52,4 +53,12 @@ public class CustomLogonPage extends BasePage {
         this.loginErrorValidation.getText();
         return this.loginErrorValidation.getText();
     }
+    public void EmptyPasswordValidationOnCustomLogonPage(){
+        this.customerEmailAddress = new TextInput(this.driver, this.customerEmailAddressElement);
+        this.customerEmailAddress.sendKeys("test") ;
+
+
+    }
+
+
 }

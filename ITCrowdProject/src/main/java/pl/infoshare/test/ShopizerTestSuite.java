@@ -10,7 +10,7 @@ import pl.infoshare.tests.LoginTest;
 import pl.infoshare.tests.PurchaseTest;
 
 @RunWith(Categories.class)
-@Categories.IncludeCategory({PurchaseTests.class, AddToCartTest.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class, PurchaseLaptopBagTest.class, HandbagsOnFooter.class, ValidateNameIsRequired.class, ValidateLastnameIsRequired.class, ValidateStreetAddressIsRequired.class, ContactUsOnFooter.class, HomeOnFooter.class, ValidateLoginFieldRequired.class})
+@Categories.IncludeCategory({PurchaseTests.class, AddToCartTest.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class, PurchaseLaptopBagTest.class, HandbagsOnFooter.class, ValidateNameIsRequired.class, ValidateLastnameIsRequired.class, ValidateStreetAddressIsRequired.class, ContactUsOnFooter.class, HomeOnFooter.class, ValidateLoginFieldRequired.class, ValidateLoginPasswordFieldRequired.class})
 @Suite.SuiteClasses({PurchaseTest.class, FooterTest.class, BillingInformationValidationTest.class, LoginTest.class})
 public class ShopizerTestSuite {
 }
