@@ -61,7 +61,7 @@ public class QuantityTest {
         handbagCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
-        reviewYourOrderPage.inputQuantity();
+        reviewYourOrderPage.inputIncreaseQuantity();
         reviewYourOrderPage.recalculateButtonClick();
 
         WaitForPage waitForPage = new WaitForPage(driver);

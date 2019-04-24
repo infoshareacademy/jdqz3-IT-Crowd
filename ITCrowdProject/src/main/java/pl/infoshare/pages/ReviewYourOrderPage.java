@@ -71,7 +71,7 @@ public class ReviewYourOrderPage extends BasePage {
         return totalsTotal;
     }
 
-    public TextInput inputQuantity(){
+    public TextInput inputIncreaseQuantity(){
         this.quantityInput = new TextInput(this.driver, this.quantityText);
         this.quantityInput.sendKeys("3");
         return quantityInput;
