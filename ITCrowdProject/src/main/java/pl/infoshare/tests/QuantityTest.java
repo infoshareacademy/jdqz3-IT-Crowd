@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.infoshare.categories.PurchaseTests;
+import pl.infoshare.categories.QuantityIncreaseTest;
 import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
@@ -49,9 +50,9 @@ public class QuantityTest {
         basePage.close();
     }
 
-
+    @Category(QuantityIncreaseTest.class)
     @Test
-    public void quantity() {
+    public void quantityIncrease() {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
 
