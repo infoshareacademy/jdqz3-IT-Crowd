@@ -1,9 +1,8 @@
 package pl.infoshare.tests;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.experimental.categories.Category;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.infoshare.categories.*;
@@ -12,7 +11,8 @@ import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.generators.BagGenerator;
 import pl.infoshare.pages.*;
-import pl.infoshare.pages.components.CategoriesMenu;
+
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,6 +25,9 @@ public class BillingInformationValidationTest {
     private Bag randomBag;
     private Bag randomBagNext;
     private Bag randomLaptopBag;
+
+    @Rule
+    public TestName testName = new TestName();
 
     @Before
     public void startBrowser() {
@@ -39,8 +42,10 @@ public class BillingInformationValidationTest {
 
     @After
     public void closeBrowser() {
+        basePage.screenShoot(testName.getMethodName());
         basePage.close();
     }
+
 
     @Category(ValidateNameIsRequired.class)
     @Test
@@ -59,6 +64,7 @@ public class BillingInformationValidationTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         assertThat(checkoutPage.validateResult()).isEqualTo("First name is required");
     }
+
     @Category(ValidateLastnameIsRequired.class)
     @Test
     public void validateLastnameIsEmpty() {
