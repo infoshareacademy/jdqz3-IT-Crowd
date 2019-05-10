@@ -18,8 +18,8 @@ public class FooterPage extends BasePage {
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/";
         this.driver.get(this.url);
-        this.signInButton = new Button(this.driver, this.signInLink);
-        this.handbagsButton = new Button(this.driver, this.handbagsLink);
+        this.signInButton=new Button(this.driver, this.signInLink);
+        this.handbagsButton=new Button(this.driver, this.handbagsLink);
         this.homeButton = new Button(this.driver, this.homeLink);
         this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
     }
@@ -40,5 +40,6 @@ public class FooterPage extends BasePage {
             this.laptopBagsButton.click();
         }
     }
+
 
 
