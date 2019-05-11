@@ -51,23 +51,24 @@ public class FooterTest {
 
     @Category(LaptopBagsOnFooter.class)
     @Test
-    public void LaptopBagsOnFooter(){
+    public void laptopBagsOnFooter() {
         FooterPage footerPage = new FooterPage(driver);
         footerPage.clickLaptopBagsButtonOnFooter();
 
         LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
         assertThat(laptopBagsCataloguePage.laptopBagText()).isEqualTo("Laptop bags");
+
+
     }
 
-   @Category(HomeOnFooter.class)
-   @Test
-   public void homeFooter(){
-       FooterPage footerPage = new FooterPage(driver);
-       footerPage.clickHomeButtonOnFooter();
+    @Category(HomeOnFooter.class)
+    @Test
+    public void homeFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickHomeButtonOnFooter();
 
-       MainPage mainPage = new MainPage(driver);
-       assertThat(mainPage.featuredItemsText()).isEqualTo("Featured items");
+        MainPage mainPage = new MainPage(driver);
+        assertThat(mainPage.featuredItemsText()).isEqualTo("Featured items");
 
-   }
-
+    }
 }
