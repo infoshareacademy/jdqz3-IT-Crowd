@@ -169,4 +169,32 @@ public class BillingInformationValidationTest {
         assertThat(checkoutPage.validateResult()).isEqualTo("Email address is required");
     }
 
+<<<<<<< HEAD
 }
+=======
+    @Test
+    public void validatePhoneNumberIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        checkoutPage.sectionState(user);
+        checkoutPage.sectionPostalCode(user);
+        checkoutPage.sectionEmail(user);
+        assertThat(checkoutPage.validateResult()).isEqualTo("Phone number is required");
+    }
+
+
+}
+>>>>>>> a0a79daaadf349c281280e96acba89f67e6a3f9a
