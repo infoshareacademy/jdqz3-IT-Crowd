@@ -37,10 +37,10 @@ public class BillingInformationValidationTest {
         this.randomLaptopBag = BagGenerator.generateCategoryRandomBag("Laptop bags");
     }
 
-    @After
-    public void closeBrowser() {
-        basePage.close();
-    }
+//    @After
+//    public void closeBrowser() {
+//        basePage.close();
+//    }
 
     @Category(ValidateNameIsRequired.class)
     @Test
@@ -50,6 +50,8 @@ public class BillingInformationValidationTest {
 
         HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
         handbagCataloguePage.addToCart();
+//        BasePage wait = new BasePage(driver);
+//        wait.waitForPage();
         handbagCataloguePage.clickOnShipping();
         handbagCataloguePage.checkout();
 
@@ -166,6 +168,5 @@ public class BillingInformationValidationTest {
 
         assertThat(checkoutPage.validateResult()).isEqualTo("Email address is required");
     }
-
 
 }
