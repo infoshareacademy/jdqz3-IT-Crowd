@@ -51,7 +51,7 @@ public class FooterTest {
 
     @Category(LaptopBagsOnFooter.class)
     @Test
-    public void LaptopBagsOnFooter() {
+    public void laptopBagsOnFooter() {
         FooterPage footerPage = new FooterPage(driver);
         footerPage.clickLaptopBagsButtonOnFooter();
 
