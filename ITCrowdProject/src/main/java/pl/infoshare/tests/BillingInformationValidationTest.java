@@ -12,7 +12,6 @@ import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.generators.BagGenerator;
 import pl.infoshare.pages.*;
-import pl.infoshare.pages.components.CategoriesMenu;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -146,7 +145,7 @@ public class BillingInformationValidationTest {
         assertThat(checkoutPage.validateResult()).isEqualTo("Postal code is required");
     }
 
-    @Category(ValidateEmailAddressIsEmpty.class)
+    @Category(ValidateEmailAddressIsRequired.class)
     @Test
     public void validateEmailAddressIsEmpty() {
         MainPage mainPage = new MainPage(driver);
@@ -170,7 +169,7 @@ public class BillingInformationValidationTest {
         assertThat(checkoutPage.validateResult()).isEqualTo("Email address is required");
     }
 
-    @Category(ValidatePhoneNumberIsEmpty.class)
+    @Category(ValidatePhoneNumberIsRequired.class)
     @Test
     public void validatePhoneNumberIsEmpty() {
         MainPage mainPage = new MainPage(driver);
