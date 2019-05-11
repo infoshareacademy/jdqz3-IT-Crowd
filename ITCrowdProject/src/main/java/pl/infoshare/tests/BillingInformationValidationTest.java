@@ -37,10 +37,10 @@ public class BillingInformationValidationTest {
         this.randomLaptopBag = BagGenerator.generateCategoryRandomBag("Laptop bags");
     }
 
-//    @After
-//    public void closeBrowser() {
-//        basePage.close();
-//    }
+    @After
+    public void closeBrowser() {
+        basePage.close();
+    }
 
     @Category(ValidateNameIsRequired.class)
     @Test
@@ -146,6 +146,7 @@ public class BillingInformationValidationTest {
         assertThat(checkoutPage.validateResult()).isEqualTo("Postal code is required");
     }
 
+    @Category(ValidateEmailAddressIsEmpty.class)
     @Test
     public void validateEmailAddressIsEmpty() {
         MainPage mainPage = new MainPage(driver);
@@ -169,9 +170,7 @@ public class BillingInformationValidationTest {
         assertThat(checkoutPage.validateResult()).isEqualTo("Email address is required");
     }
 
-<<<<<<< HEAD
-}
-=======
+    @Category(ValidatePhoneNumberIsEmpty.class)
     @Test
     public void validatePhoneNumberIsEmpty() {
         MainPage mainPage = new MainPage(driver);
@@ -197,4 +196,3 @@ public class BillingInformationValidationTest {
 
 
 }
->>>>>>> a0a79daaadf349c281280e96acba89f67e6a3f9a
