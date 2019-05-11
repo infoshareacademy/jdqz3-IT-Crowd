@@ -42,7 +42,6 @@ public class Button {
         runner.executeScript(script, this.element);
         return this;
     }
-
     public void doubleClick() {
         Actions action = new Actions(driver);
         action.doubleClick(this.element).perform();
