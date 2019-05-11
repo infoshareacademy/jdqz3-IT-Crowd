@@ -192,6 +192,4 @@ public class BillingInformationValidationTest {
         checkoutPage.sectionEmail(user);
         assertThat(checkoutPage.validateResult()).isEqualTo("Phone number is required");
     }
-
-
 }
