@@ -37,7 +37,7 @@ public class FooterPage extends BasePage {
     }
 
         public void clickLaptopBagsButtonOnFooter() {
-            this.laptopBagsButton.();
+            this.laptopBagsButton.click();
         }
     }
 
