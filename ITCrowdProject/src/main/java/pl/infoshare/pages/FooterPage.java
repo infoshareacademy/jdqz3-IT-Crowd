@@ -36,10 +36,7 @@ public class FooterPage extends BasePage {
         this.homeButton.safeClick();
     }
 
-        public void clickLaptopBagsButtonOnFooter() {
-            this.laptopBagsButton.click();
-        }
+    public void clickLaptopBagsButtonOnFooter(){
+        this.laptopBagsButton.doubleClick();
     }
-
-
-
+}
