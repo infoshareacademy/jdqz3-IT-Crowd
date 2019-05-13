@@ -25,8 +25,12 @@ public class FooterTest {
     private Bag randomBagNext;
     private Bag randomLaptopBag;
 
+
+
+
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
