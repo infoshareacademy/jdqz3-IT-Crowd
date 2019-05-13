@@ -11,6 +11,7 @@ import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
