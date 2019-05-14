@@ -82,4 +82,16 @@ public class FooterTest {
         ContactUsPage contactUsPage = new ContactUsPage(driver);
         assertThat(contactUsPage.contactUsText()).isEqualTo("Contact us");
     }
+
+    @Category(RegisterOnFooter.class)
+    @Test
+    public void RegisterOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickRegisterButtonOnFooter();
+
+        RegisterPage registerPage = new RegisterPage(driver);
+        assertThat(registerPage.registerText()).isEqualTo("Personal information");
+    }
+
+
 }
