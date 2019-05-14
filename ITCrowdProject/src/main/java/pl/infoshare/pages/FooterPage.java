@@ -1,4 +1,5 @@
 package pl.infoshare.pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
@@ -12,6 +13,9 @@ public class FooterPage extends BasePage {
     private Button laptopBagsButton;
     private By homeLink = By.xpath("//a[contains(text(),'Home')]");
     private Button homeButton;
+    private By contactUsLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(6) > a");
+    private Button contactUsButton;
+
 
 
     public FooterPage(WebDriver driver) {
@@ -22,21 +26,28 @@ public class FooterPage extends BasePage {
         this.handbagsButton=new Button(this.driver, this.handbagsLink);
         this.homeButton = new Button(this.driver, this.homeLink);
         this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
+        this.contactUsButton = new Button(this.driver,this.contactUsLink);
     }
 
-    public void clickSignIn() {
-        this.signInButton.click();
+    public void clickSignIn(){
+        this.signInButton.doubleClick();
     }
 
-    public void clickHandbagsButtonOnFooter() {
-        this.handbagsButton.click();
+    public void clickHandbagsButtonOnFooter(){
+        this.handbagsButton.doubleClick();
     }
 
-    public void clickHomeButtonOnFooter() {
+    public void clickHomeButtonOnFooter(){
         this.homeButton.safeClick();
+
     }
 
     public void clickLaptopBagsButtonOnFooter(){
         this.laptopBagsButton.doubleClick();
     }
+
+    public void clickContactUsButtonOnFooter(){
+        this.contactUsButton.doubleClick();
+    }
+
 }

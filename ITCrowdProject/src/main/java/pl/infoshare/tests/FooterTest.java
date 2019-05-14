@@ -26,9 +26,6 @@ public class FooterTest {
     private Bag randomBagNext;
     private Bag randomLaptopBag;
 
-
-
-
     @Before
     public void startBrowser() {
         WebDriverManager.chromedriver().setup();
@@ -43,6 +40,7 @@ public class FooterTest {
     }
 
 
+
     @Category(HandbagsOnFooter.class)
     @Test
     public void handbagsOnFooter() {
@@ -53,27 +51,35 @@ public class FooterTest {
         assertThat(handbagText.handbagText()).isEqualTo("Handbags");
 
     }
-
-    @Category(LaptopBagsOnFooter.class)
-    @Test
-    public void laptopBagsOnFooter(){
-        FooterPage footerPage = new FooterPage(driver);
-        footerPage.clickLaptopBagsButtonOnFooter();
-
-        LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
-        assertThat(laptopBagsCataloguePage.laptopBagText()).isEqualTo("Laptop bags");
-
-
-    }
-
     @Category(HomeOnFooter.class)
     @Test
-    public void homeFooter() {
+    public void homeFooter(){
         FooterPage footerPage = new FooterPage(driver);
         footerPage.clickHomeButtonOnFooter();
 
         MainPage mainPage = new MainPage(driver);
         assertThat(mainPage.featuredItemsText()).isEqualTo("Featured items");
 
+    }
+
+    @Category(LaptopBagsOnFooter.class)
+    @Test
+    public void laptopBagsOnFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickLaptopBagsButtonOnFooter();
+
+        LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
+        assertThat(laptopBagsCataloguePage.laptopBagText()).isEqualTo("Laptop bags");
+
+    }
+
+    @Category(ContactUsOnFooter.class)
+    @Test
+    public void ContactUsOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickContactUsButtonOnFooter();
+
+        ContactUsPage contactUsPage = new ContactUsPage(driver);
+        assertThat(contactUsPage.contactUsText()).isEqualTo("Contact us");
     }
 }
