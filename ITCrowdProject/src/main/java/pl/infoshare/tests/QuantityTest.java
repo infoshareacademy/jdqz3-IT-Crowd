@@ -2,8 +2,10 @@ package pl.infoshare.tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,6 +30,8 @@ public class QuantityTest {
     private Bag randomBagNext;
     private Bag randomLaptopBag;
 
+    @Rule
+    public TestName testName = new TestName();
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
@@ -36,10 +40,11 @@ public class QuantityTest {
 
     }
 
-//    @After
-//    public void closeBrowser() {
-//        basePage.close();
-//    }
+    @After
+    public void closeBrowser() {
+        basePage.screenShoot(testName.getMethodName());
+        basePage.close();
+    }
 
 
     @Test
