@@ -14,27 +14,31 @@ public class FooterPage extends BasePage {
 
     private By homeLink = By.xpath("//a[contains(text(),'Home')]");
     private Button homeButton;
-
     private By contactUsLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(6) > a");
     private Button contactUsButton;
+    private By registerLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(7) > a");
+    private Button registerButton;
+
+
 
     public FooterPage(WebDriver driver) {
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/";
         this.driver.get(this.url);
-        this.signInButton = new Button(this.driver, this.signInLink);
-        this.handbagsButton = new Button(this.driver, this.handbagsLink);
-        this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
+        this.signInButton=new Button(this.driver, this.signInLink);
+        this.handbagsButton=new Button(this.driver, this.handbagsLink);
         this.homeButton = new Button(this.driver, this.homeLink);
-        this.contactUsButton = new Button(this.driver, this.contactUsLink);
+        this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
+        this.contactUsButton = new Button(this.driver,this.contactUsLink);
+        this.registerButton = new Button(this.driver, this.registerLink);
     }
 
-    public void clickSignIn() {
-        this.signInButton.click();
+    public void clickSignIn(){
+        this.signInButton.doubleClick();
     }
 
-    public void clickHandbagsButtonOnFooter() {
-        this.handbagsButton.click();
+    public void clickHandbagsButtonOnFooter(){
+        this.handbagsButton.doubleClick();
     }
 
     public void clickHomeButtonOnFooter() {
@@ -42,11 +46,12 @@ public class FooterPage extends BasePage {
 
     }
 
-    public void clickLaptopBagsButtonOnFuter() {
-        this.laptopBagsButton.click();
+    public void clickLaptopBagsButtonOnFooter(){
+        this.laptopBagsButton.doubleClick();
     }
 
-    public void clickContactUsButtonOnFooter() {
-        this.contactUsButton.safeClick();
+    public void clickRegisterButtonOnFooter(){
+        this.registerButton.doubleClick();
     }
+
 }

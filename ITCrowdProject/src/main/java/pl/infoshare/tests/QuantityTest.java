@@ -2,9 +2,10 @@ package pl.infoshare.tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.JavascriptExecutor;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,6 +38,8 @@ public class QuantityTest {
     private Object browser;
     private WebElement __document;
 
+    @Rule
+    public TestName testName = new TestName();
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
@@ -47,6 +50,7 @@ public class QuantityTest {
 
     @After
     public void closeBrowser() {
+        basePage.screenShoot(testName.getMethodName());
         basePage.close();
     }
 
