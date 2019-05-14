@@ -28,11 +28,11 @@ public class FooterPage extends BasePage {
     }
 
     public void clickSignIn(){
-        this.signInButton.click();
+        this.signInButton.doubleClick();
     }
 
     public void clickHandbagsButtonOnFooter(){
-        this.handbagsButton.click();
+        this.handbagsButton.doubleClick();
     }
 
     public void clickHomeButtonOnFooter(){
@@ -41,10 +41,10 @@ public class FooterPage extends BasePage {
     }
 
     public void clickLaptopBagsButtonOnFuter(){
-        this.laptopBagsButton.click();
+        this.laptopBagsButton.doubleClick();
     }
 
     public void clickContactUsButtonOnFooter(){
-        this.contactUsButton.
+        this.contactUsButton.doubleClick();
     }
 }

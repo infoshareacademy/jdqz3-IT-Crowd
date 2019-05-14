@@ -1,5 +1,6 @@
 package pl.infoshare.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +28,7 @@ public class FooterTest {
 
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
@@ -68,7 +70,14 @@ public class FooterTest {
 
         LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
         assertThat(laptopBagsCataloguePage.laptopBagTekst()).isEqualTo("Laptop bags");
+    }
 
+    @Test
+    public void ContactUsOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickContactUsButtonOnFooter();
 
+        ContactUsPage contactUsPage = new ContactUsPage(driver);
+        assertThat(contactUsPage.contactUsText()).isEqualTo("Contact us");
     }
 }
