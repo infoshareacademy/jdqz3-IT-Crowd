@@ -1,5 +1,6 @@
 package pl.infoshare.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,6 @@ import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.generators.BagGenerator;
 import pl.infoshare.pages.*;
-import pl.infoshare.pages.components.CategoriesMenu;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,8 +28,8 @@ public class BillingInformationValidationTest {
 
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
         this.randomBag = BagGenerator.generateRandomBag();
@@ -99,4 +99,96 @@ public class BillingInformationValidationTest {
     }
 
 
+    @Category(ValidateStateIsRequired.class)
+    @Test
+    public void validateStateIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        assertThat(checkoutPage.validateResult()).isEqualTo("State / Province is required");
+    }
+
+    @Category(ValidatePostalCodeIsRequired.class)
+
+    @Test
+    public void validatePostalCodeIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        checkoutPage.sectionState(user);
+
+        assertThat(checkoutPage.validateResult()).isEqualTo("Postal code is required");
+    }
+
+    @Category(ValidateEmailAddressIsRequired.class)
+    @Test
+    public void validateEmailAddressIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        checkoutPage.sectionState(user);
+        checkoutPage.sectionPostalCode(user);
+
+        assertThat(checkoutPage.validateResult()).isEqualTo("Email address is required");
+    }
+
+    @Category(ValidatePhoneNumberIsRequired.class)
+    @Test
+    public void validatePhoneNumberIsEmpty() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionName(user);
+        checkoutPage.sectionLastName(user);
+        checkoutPage.sectionStreetAddress(user);
+        checkoutPage.sectionState(user);
+        checkoutPage.sectionPostalCode(user);
+        checkoutPage.sectionEmail(user);
+        assertThat(checkoutPage.validateResult()).isEqualTo("Phone number is required");
+    }
 }

@@ -20,7 +20,7 @@ public class BasePage {
         waitForPage();
     }
 
-    private void waitForPage(){
+     void waitForPage(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
         JavascriptExecutor runner = (JavascriptExecutor) driver;
         wait.until((ExpectedCondition<Boolean>) driver
@@ -28,6 +28,8 @@ public class BasePage {
     }
 
     public void close(){
+
         this.driver.quit();
     }
+
 }
