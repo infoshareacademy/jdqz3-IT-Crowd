@@ -2,8 +2,10 @@ package pl.infoshare.tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.infoshare.categories.*;
@@ -26,6 +28,8 @@ public class FooterTest {
     private Bag randomBagNext;
     private Bag randomLaptopBag;
 
+    @Rule
+    public TestName testName = new TestName();
     @Before
     public void startBrowser() {
         WebDriverManager.chromedriver().setup();
@@ -36,6 +40,7 @@ public class FooterTest {
 
     @After
     public void closeBrowser() {
+        basePage.screenShoot(testName.getMethodName());
         basePage.close();
     }
 
