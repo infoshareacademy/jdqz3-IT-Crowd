@@ -30,9 +30,10 @@ public class MainPage extends BasePage {
         this.categoryButton = new Button(this.driver, this.categoryLink);
         this.categoryButton.click();
     }
+
     public String featuredItemsText(){
         this.featuredItemsText = By.cssSelector("body > div.slider-area > div.container > h2");
-        this.featuredItems = new Label(this.driver, this.featuredItemsText);
+        this.featuredItems = new Label (this.driver, this.featuredItemsText);
         return this.featuredItems.getText();
     }
 }

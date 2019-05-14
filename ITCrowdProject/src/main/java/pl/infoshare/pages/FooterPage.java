@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
 
 public class FooterPage extends BasePage {
-    private By signInLink=By.cssSelector("div.footer-area.ptb-80 a[href='/shop/customer/customLogon.html']");
+    private By signInLink = By.cssSelector("div.footer-area.ptb-80 a[href='/shop/customer/customLogon.html']");
     private Button signInButton;
-    private By handbagsLink=By.xpath("//span[contains(text(),'Handbags')]");
+    private By handbagsLink = By.xpath("//span[contains(text(),'Handbags')]");
     private Button handbagsButton;
     private By laptopBagsLink = By.cssSelector(".usefull-link li:nth-of-type(4) .name");
     private Button laptopBagsButton;
@@ -16,14 +16,16 @@ public class FooterPage extends BasePage {
     private By contactUsLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(6) > a");
     private Button contactUsButton;
 
-    public FooterPage(WebDriver driver){
+
+
+    public FooterPage(WebDriver driver) {
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/";
         this.driver.get(this.url);
         this.signInButton=new Button(this.driver, this.signInLink);
         this.handbagsButton=new Button(this.driver, this.handbagsLink);
+        this.homeButton = new Button(this.driver, this.homeLink);
         this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
-        this.homeButton=new Button(this.driver,this.homeLink);
         this.contactUsButton = new Button(this.driver,this.contactUsLink);
     }
 
@@ -40,11 +42,12 @@ public class FooterPage extends BasePage {
 
     }
 
-    public void clickLaptopBagsButtonOnFuter(){
+    public void clickLaptopBagsButtonOnFooter(){
         this.laptopBagsButton.doubleClick();
     }
 
     public void clickContactUsButtonOnFooter(){
         this.contactUsButton.doubleClick();
     }
+
 }
