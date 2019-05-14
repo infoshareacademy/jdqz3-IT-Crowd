@@ -1,5 +1,6 @@
 package pl.infoshare.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,8 +28,8 @@ public class BillingInformationValidationTest {
 
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
         this.randomBag = BagGenerator.generateRandomBag();
@@ -49,8 +50,6 @@ public class BillingInformationValidationTest {
 
         HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
         handbagCataloguePage.addToCart();
-//        BasePage wait = new BasePage(driver);
-//        wait.waitForPage();
         handbagCataloguePage.clickOnShipping();
         handbagCataloguePage.checkout();
 
