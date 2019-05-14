@@ -23,4 +23,5 @@ public class Label {
     public String getValue(){
         return this.element.getAttribute("value");
     }
+
 }

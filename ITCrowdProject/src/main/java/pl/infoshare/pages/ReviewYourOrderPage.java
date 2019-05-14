@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
 import pl.infoshare.elements.Label;
+import pl.infoshare.elements.TextInput;
 
 public class ReviewYourOrderPage extends BasePage {
 
@@ -21,6 +22,13 @@ public class ReviewYourOrderPage extends BasePage {
     private Label totalsSubtotal;
     private By cartTotalsTotal = By.cssSelector("div.cart_totals div table tbody tr:nth-child(2) td span");
     private Label totalsTotal;
+
+    private By quantityText = By.cssSelector(".input-small[name='quantity']");
+    private TextInput quantityInput;
+
+    private By recalculateLink = By.xpath("//a[contains(text(),'Recalculate')]");
+    private Button recalculate;
+
 
     public ReviewYourOrderPage(WebDriver driver){
         super(driver);
@@ -61,6 +69,18 @@ public class ReviewYourOrderPage extends BasePage {
     public Label getTotalsTotal() {
         this.totalsTotal = new Label(this.driver, this.cartTotalsTotal);
         return totalsTotal;
+    }
+
+    public TextInput inputQuantity(){
+        this.quantityInput = new TextInput(this.driver, this.quantityText);
+        this.quantityInput.sendKeys("3");
+        return quantityInput;
+    }
+
+    public Button recalculateButtonClick(){
+        this.recalculate = new Button(this.driver, this.recalculateLink);
+        this.recalculate.safeClick();
+        return recalculate;
     }
 
 }

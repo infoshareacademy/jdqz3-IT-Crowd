@@ -11,6 +11,7 @@ import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,6 +28,7 @@ public class FooterTest {
 
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
@@ -62,13 +64,34 @@ public class FooterTest {
 
     @Category(LaptopBagsOnFooter.class)
     @Test
-    public void LaptopBagsOnFooter(){
+    public void laptopBagsOnFooter() {
         FooterPage footerPage = new FooterPage(driver);
-        footerPage.clickLaptopBagsButtonOnFuter();
+        footerPage.clickLaptopBagsButtonOnFooter();
 
         LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
-        assertThat(laptopBagsCataloguePage.laptopBagTekst()).isEqualTo("Laptop bags");
-
+        assertThat(laptopBagsCataloguePage.laptopBagText()).isEqualTo("Laptop bags");
 
     }
+
+    @Category(ContactUsOnFooter.class)
+    @Test
+    public void ContactUsOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickContactUsButtonOnFooter();
+
+        ContactUsPage contactUsPage = new ContactUsPage(driver);
+        assertThat(contactUsPage.contactUsText()).isEqualTo("Contact us");
+    }
+
+    @Category(RegisterOnFooter.class)
+    @Test
+    public void RegisterOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickRegisterButtonOnFooter();
+
+        RegisterPage registerPage = new RegisterPage(driver);
+        assertThat(registerPage.registerText()).isEqualTo("Personal information");
+    }
+
+
 }

@@ -45,7 +45,6 @@ public class CheckoutPage extends BasePage{
         this.phoneNumber = new TextInput(this.driver, this.phoneNumberInput);
         this.email = new TextInput(this.driver, this.emailInput);
         this.validate = new Label(this.driver,this.validateField);
-
     }
 
     public void sectionFullName(RegisteredUser user){

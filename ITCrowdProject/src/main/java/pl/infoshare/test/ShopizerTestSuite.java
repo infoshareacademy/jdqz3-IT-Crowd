@@ -11,5 +11,7 @@ import pl.infoshare.tests.PurchaseTest;
 @RunWith(Categories.class)
 @Categories.IncludeCategory({PurchaseTests.class, AddToCartTest.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class, PurchaseLaptopBagTest.class, HandbagsOnFooter.class, ValidateNameIsRequired.class, ValidateLastnameIsRequired.class, ValidateStreetAddressIsRequired.class, ValidateStateIsRequired.class, ValidatePostalCodeIsRequired.class, ValidateEmailAddressIsRequired.class, ValidateEmailAddressIsRequired.class, ValidatePhoneNumberIsRequired.class})
 @Suite.SuiteClasses({PurchaseTest.class, FooterTest.class, BillingInformationValidationTest.class})
+@Categories.IncludeCategory({PurchaseTests.class, AddToCartTest.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class, PurchaseLaptopBagTest.class, HandbagsOnFooter.class, LaptopBagsOnFooter.class, HomeOnFooter.class, ContactUsOnFooter.class, RegisterOnFooter.class})
+@Suite.SuiteClasses({PurchaseTest.class, FooterTest.class})
 public class ShopizerTestSuite {
 }
