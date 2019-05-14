@@ -1,5 +1,6 @@
 package pl.infoshare.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +33,7 @@ public class PurchaseTest {
 
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);

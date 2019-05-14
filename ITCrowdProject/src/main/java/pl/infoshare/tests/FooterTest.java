@@ -11,6 +11,7 @@ import pl.infoshare.dataModels.Address;
 import pl.infoshare.dataModels.Bag;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,8 +26,12 @@ public class FooterTest {
     private Bag randomBagNext;
     private Bag randomLaptopBag;
 
+
+
+
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
