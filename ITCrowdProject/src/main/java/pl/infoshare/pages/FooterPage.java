@@ -11,9 +11,10 @@ public class FooterPage extends BasePage {
     private Button handbagsButton;
     private By laptopBagsLink = By.cssSelector(".usefull-link li:nth-of-type(4) .name");
     private Button laptopBagsButton;
-
     private By homeLink = By.xpath("//a[contains(text(),'Home')]");
     private Button homeButton;
+    private By contactUsLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(6) > a");
+    private Button contactUsButton;
 
     public FooterPage(WebDriver driver){
         super(driver);
@@ -23,6 +24,7 @@ public class FooterPage extends BasePage {
         this.handbagsButton=new Button(this.driver, this.handbagsLink);
         this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
         this.homeButton=new Button(this.driver,this.homeLink);
+        this.contactUsButton = new Button(this.driver,this.contactUsLink);
     }
 
     public void clickSignIn(){
@@ -38,8 +40,11 @@ public class FooterPage extends BasePage {
 
     }
 
-
     public void clickLaptopBagsButtonOnFuter(){
         this.laptopBagsButton.click();
+    }
+
+    public void clickContactUsButtonOnFooter(){
+        this.contactUsButton.
     }
 }
