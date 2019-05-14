@@ -108,10 +108,6 @@ public class CheckoutPage extends BasePage{
         return this.validate.getText();
     }
 
-    public void sectionPhoneNymber(RegisteredUser user){
-        this.phoneNumber.sendKeys(user.getPhoneNumber());
-    }
-
     public void sectionEmail(RegisteredUser user){
         this.email.sendKeys(user.getEmail());
     }
