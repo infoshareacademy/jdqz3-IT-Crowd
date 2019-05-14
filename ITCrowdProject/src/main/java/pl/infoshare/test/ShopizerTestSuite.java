@@ -8,9 +8,10 @@ import pl.infoshare.pages.MainPage;
 import pl.infoshare.tests.BillingInformationValidationTest;
 import pl.infoshare.tests.FooterTest;
 import pl.infoshare.tests.PurchaseTest;
+import pl.infoshare.tests.QuantityTest;
 
 @RunWith(Categories.class)
 @Categories.IncludeCategory({PurchaseTests.class, AddToCartTest.class, AddToCartRandomBagTest.class, AddToCartNextRandomBagTest.class, PurchaseLaptopBagTest.class, HandbagsOnFooter.class, ValidateNameIsRequired.class, ValidateLastnameIsRequired.class, ValidateStreetAddressIsRequired.class, ValidateStateIsRequired.class, ValidatePostalCodeIsRequired.class, ValidateEmailAddressIsRequired.class, ValidateEmailAddressIsRequired.class, ValidatePhoneNumberIsRequired.class})
-@Suite.SuiteClasses({PurchaseTest.class, FooterTest.class, BillingInformationValidationTest.class})
+@Suite.SuiteClasses({PurchaseTest.class, FooterTest.class, BillingInformationValidationTest.class, QuantityTest.class})
 public class ShopizerTestSuite {
 }

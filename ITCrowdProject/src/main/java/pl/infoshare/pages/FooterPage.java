@@ -43,7 +43,6 @@ public class FooterPage extends BasePage {
 
     public void clickHomeButtonOnFooter() {
         this.contactUsButton.safeClick();
-
     }
 
     public void clickLaptopBagsButtonOnFooter(){
@@ -54,4 +53,7 @@ public class FooterPage extends BasePage {
         this.registerButton.doubleClick();
     }
 
+    public void clickContactUsButtonOnFooter(){
+        this.contactUsButton.doubleClick();
+    }
 }
