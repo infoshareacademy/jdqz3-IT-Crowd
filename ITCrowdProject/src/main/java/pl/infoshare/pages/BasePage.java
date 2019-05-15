@@ -48,8 +48,8 @@ public class BasePage {
         String name = methodName + "_" + dateFormat.format(date);
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("..\\Screen\\"
-                    + name + ".png"));
+//            FileUtils.copyFile(scrFile, new File("..\\Screen\\" + name + ".png"));
+            FileUtils.copyFile(scrFile, new File("Screen" + File.separator + File.separator + name + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
