@@ -10,5 +10,7 @@ ITCrowdProject/chromedriver
 ITCrowdProject/.DS_Store
 .DS_Store
 .DS_Store
-
+*.DS_Store
 *.png
+.DS_Store
+ITCrowdProject/.DS_Store
