@@ -45,7 +45,6 @@ public class FooterTest {
     }
 
 
-
     @Category(HandbagsOnFooter.class)
     @Test
     public void handbagsOnFooter() {
@@ -56,9 +55,10 @@ public class FooterTest {
         assertThat(handbagText.handbagText()).isEqualTo("Handbags");
 
     }
+
     @Category(HomeOnFooter.class)
     @Test
-    public void homeFooter(){
+    public void homeFooter() {
         FooterPage footerPage = new FooterPage(driver);
         footerPage.clickHomeButtonOnFooter();
 

@@ -11,6 +11,7 @@ public class FooterPage extends BasePage {
     private Button handbagsButton;
     private By laptopBagsLink = By.cssSelector(".usefull-link li:nth-of-type(4) .name");
     private Button laptopBagsButton;
+
     private By homeLink = By.xpath("//a[contains(text(),'Home')]");
     private Button homeButton;
     private By contactUsLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(6) > a");
@@ -40,22 +41,19 @@ public class FooterPage extends BasePage {
         this.handbagsButton.doubleClick();
     }
 
-    public void clickHomeButtonOnFooter(){
-        this.homeButton.safeClick();
-
+    public void clickHomeButtonOnFooter() {
+        this.contactUsButton.safeClick();
     }
 
     public void clickLaptopBagsButtonOnFooter(){
         this.laptopBagsButton.doubleClick();
     }
 
-    public void clickContactUsButtonOnFooter(){
-        this.contactUsButton.doubleClick();
-    }
-
-
     public void clickRegisterButtonOnFooter(){
         this.registerButton.doubleClick();
     }
 
+    public void clickContactUsButtonOnFooter(){
+        this.contactUsButton.doubleClick();
+    }
 }
