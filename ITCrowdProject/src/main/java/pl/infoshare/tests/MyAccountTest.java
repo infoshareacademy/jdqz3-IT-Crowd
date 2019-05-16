@@ -5,9 +5,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.infoshare.categories.RegisterUnderMyAccount;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.BasePage;
 import pl.infoshare.pages.MainPage;
@@ -40,6 +42,7 @@ public class MyAccountTest {
         basePage.close();
     }
 
+    @Category(RegisterUnderMyAccount.class)
     @Test
     public void registerUnderMyAccount() {
         MainPage mainPage = new MainPage(driver);
