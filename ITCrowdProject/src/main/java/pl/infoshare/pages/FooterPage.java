@@ -18,6 +18,9 @@ public class FooterPage extends BasePage {
     private Button contactUsButton;
     private By registerLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(7) > a");
     private Button registerButton;
+    private By beachBagsLink = By.cssSelector("body > div.footer-area.ptb-80 > div > div > div:nth-child(2) > div > div > ul > li:nth-child(3) > a > span");
+    private Button beachButton;
+
 
 
 
@@ -31,6 +34,7 @@ public class FooterPage extends BasePage {
         this.laptopBagsButton = new Button(this.driver, this.laptopBagsLink);
         this.contactUsButton = new Button(this.driver,this.contactUsLink);
         this.registerButton = new Button(this.driver, this.registerLink);
+        this.beachButton = new Button(this.driver, this.beachBagsLink);
     }
 
     public void clickSignIn(){
@@ -56,4 +60,6 @@ public class FooterPage extends BasePage {
     public void clickContactUsButtonOnFooter(){
         this.contactUsButton.doubleClick();
     }
+
+    public void clickBeachBagsOnFooter(){this.beachButton.doubleClick();}
 }

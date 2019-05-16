@@ -98,5 +98,14 @@ public class FooterTest {
         assertThat(registerPage.registerText()).isEqualTo("Personal information");
     }
 
+    @Category(BeachBagsOnFooter.class)
+    @Test
+    public void BeachBagsOnFooter(){
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickBeachBagsOnFooter();
+
+        BeachBagsCataloguePage beachBagsCataloguePage = new BeachBagsCataloguePage(driver);
+        assertThat(beachBagsCataloguePage.beachBagsText()).isEqualTo("Beach bags");
+    }
 
 }
