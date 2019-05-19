@@ -22,6 +22,9 @@ public class CustomLogonPage extends BasePage {
     private Label registeredCustomer;
     private By newCustomerElement = By.xpath("//div[2]/div/h3");
     private Label newCustomer;
+    private By loginErrorText = By.cssSelector("#loginError");
+    private Label loginErrorValidation;
+
 
     public CustomLogonPage(WebDriver driver){
         super(driver);
@@ -49,5 +52,22 @@ public class CustomLogonPage extends BasePage {
     public String isNewCustomerSection() {
         return this.newCustomer.getText();
     }
+
+    public void clickSignInButtonOnCustomLogonPage() {
+        this.signIn = new Button(this.driver, this.signInElement);
+        this.signIn.click();
+    }
+    public String LoginErrorValidationOnCustomLogonPage(){
+        this.loginErrorValidation = new Label(this.driver, this.loginErrorText);
+        this.loginErrorValidation.getText();
+        return this.loginErrorValidation.getText();
+    }
+    public void EmptyPasswordValidationOnCustomLogonPage(){
+        this.customerEmailAddress = new TextInput(this.driver, this.customerEmailAddressElement);
+        this.customerEmailAddress.sendKeys("test") ;
+
+
+    }
+
 
 }
