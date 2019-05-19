@@ -18,6 +18,8 @@ public class MainPage extends BasePage {
     private Button myAccountButton;
     private By myAccountRegisterLink;
     private Button myAccountRegisterButton;
+    private By myAccountSignInLink;
+    private Button myAccountSignInButton;
 
 
     public MainPage(WebDriver driver){
@@ -56,6 +58,10 @@ public class MainPage extends BasePage {
         this.myAccountRegisterButton.doubleClick();
     }
 
-
+    public void clickOnMyAccountSignInButton(){
+        this.myAccountSignInLink = By.xpath("(//li/a[text()='Sign in'])[1]");
+        this.myAccountSignInButton = new Button(this.driver, this.myAccountSignInLink);
+        this.myAccountSignInButton.clickWithJs();
+    }
 
 }
