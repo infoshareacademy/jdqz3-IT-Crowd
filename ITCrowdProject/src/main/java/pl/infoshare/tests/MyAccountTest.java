@@ -10,8 +10,10 @@ import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.infoshare.categories.RegisterUnderMyAccount;
+import pl.infoshare.categories.SignInUnderMyAccount;
 import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.pages.BasePage;
+import pl.infoshare.pages.CustomLogonPage;
 import pl.infoshare.pages.MainPage;
 import pl.infoshare.pages.RegisterPage;
 
@@ -51,5 +53,17 @@ public class MyAccountTest {
 
         RegisterPage registerPage = new RegisterPage(driver);
         assertThat(registerPage.registerText()).isEqualTo("Personal information");
+    }
+
+    @Category(SignInUnderMyAccount.class)
+    @Test
+    public void signInUnderMyAccount(){
+        MainPage mainPage = new MainPage(driver);
+        mainPage.clickOnMyAccountButton();
+        mainPage.clickOnMyAccountSignInButton();
+
+        CustomLogonPage customLogonPage = new CustomLogonPage(driver,true);
+        assertThat(customLogonPage.isRegisteredCustomerSection()).isEqualTo("Registered customer");
+
     }
 }

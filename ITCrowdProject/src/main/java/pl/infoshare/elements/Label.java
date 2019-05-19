@@ -11,13 +11,22 @@ public class Label {
     private WebElement element;
     private WebDriver driver;
 
+
     public Label(WebDriver driver, By by){
         this.driver = driver;
         WebDriverWait wait = new WebDriverWait(this.driver, timeout);
         element = wait.until(ExpectedConditions.elementToBeClickable((by)));
     }
+    public Label(WebDriver driver){
+        this.driver = driver;
+    }
     public String getText(){
         return this.element.getText();
+    }
+    public String getText(By by){
+        WebDriverWait wait  = new WebDriverWait(this.driver,timeout);
+
+        return driver.findElement(by).getText();
     }
 
     public String getValue(){
