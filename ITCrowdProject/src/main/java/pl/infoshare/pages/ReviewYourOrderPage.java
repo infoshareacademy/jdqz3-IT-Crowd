@@ -82,6 +82,11 @@ public class ReviewYourOrderPage extends BasePage {
         this.recalculate.safeClick();
         return recalculate;
     }
+    public TextInput inputDecreaseQuantity(){
+        this.quantityInput = new TextInput(this.driver, this.quantityText);
+        this.quantityInput.sendKeys("2");
+        return quantityInput;
+    }
 
 }
 

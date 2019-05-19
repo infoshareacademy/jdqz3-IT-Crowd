@@ -76,6 +76,7 @@ public class FooterTest {
         LaptopBagsCataloguePage laptopBagsCataloguePage = new LaptopBagsCataloguePage(driver);
         assertThat(laptopBagsCataloguePage.laptopBagText()).isEqualTo("Laptop bags");
 
+
     }
 
     @Category(ContactUsOnFooter.class)

@@ -76,4 +76,31 @@ public class QuantityTest {
 
         assertThat(reviewYourOrderPage.getTotal().getText()).isEqualTo("$234.00");
     }
+
+    @Category(QuantityIncreaseTest.class)
+    @Test
+    public void quantityDecrease() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.inputIncreaseQuantity();
+        reviewYourOrderPage.recalculateButtonClick();
+
+        WaitForPage waitForPage = new WaitForPage(driver);
+        waitForPage.waitForPage();
+
+        reviewYourOrderPage.inputDecreaseQuantity();
+        reviewYourOrderPage.recalculateButtonClick();
+
+        waitForPage.waitForPage();
+
+
+        assertThat(reviewYourOrderPage.getTotal().getText()).isEqualTo("$156.00");
+    }
 }
