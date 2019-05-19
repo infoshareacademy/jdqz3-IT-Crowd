@@ -50,9 +50,9 @@ public class PurchaseTest {
         basePage.close();
     }
 
-    @Category(PurchaseTests.class)
+    @Category(PurchaseHandBag.class)
     @Test
-    public void purchase() {
+    public void purchaseHandBag() {
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
 
