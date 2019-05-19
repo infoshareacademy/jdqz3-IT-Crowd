@@ -1,10 +1,12 @@
 package pl.infoshare.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.JavascriptExecutor;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,7 +22,6 @@ import pl.infoshare.dataModels.RegisteredUser;
 import pl.infoshare.generators.BagGenerator;
 import pl.infoshare.pages.*;
 import pl.infoshare.pages.waitForPage.WaitForPage;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,8 +38,11 @@ public class QuantityTest {
     private Object browser;
     private WebElement __document;
 
+    @Rule
+    public TestName testName = new TestName();
     @Before
     public void startBrowser() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         this.basePage = new BasePage(driver);
         this.user = new RegisteredUser(true);
@@ -47,9 +51,9 @@ public class QuantityTest {
 
     @After
     public void closeBrowser() {
+        basePage.screenShoot(testName.getMethodName());
         basePage.close();
     }
-
 
     @Category(QuantityIncreaseTest.class)
     @Test

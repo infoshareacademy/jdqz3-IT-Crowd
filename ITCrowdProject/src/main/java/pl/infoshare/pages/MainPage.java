@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import pl.infoshare.elements.Button;
 import pl.infoshare.elements.Label;
 
+import javax.swing.plaf.PanelUI;
+
 public class MainPage extends BasePage {
     private By handbagsLink;
     private Button handbagsButton;
@@ -12,6 +14,11 @@ public class MainPage extends BasePage {
     private Button categoryButton;
     private By featuredItemsText;
     private Label featuredItems;
+    private By myAccountLink;
+    private Button myAccountButton;
+    private By myAccountRegisterLink;
+    private Button myAccountRegisterButton;
+
 
     public MainPage(WebDriver driver){
         super(driver);
@@ -30,9 +37,25 @@ public class MainPage extends BasePage {
         this.categoryButton = new Button(this.driver, this.categoryLink);
         this.categoryButton.click();
     }
+
     public String featuredItemsText(){
         this.featuredItemsText = By.cssSelector("body > div.slider-area > div.container > h2");
-        this.featuredItems = new Label(this.driver, this.featuredItemsText);
+        this.featuredItems = new Label (this.driver, this.featuredItemsText);
         return this.featuredItems.getText();
     }
+
+    public void clickOnMyAccountButton(){
+        this.myAccountLink = By.cssSelector("#customerAccount > ul > li > a");
+        this.myAccountButton = new Button(this.driver,this.myAccountLink);
+        this.myAccountButton.doubleClick();
+    }
+
+    public void clickOnMyAccountRegisterButton(){
+        this.myAccountRegisterLink = By.cssSelector("#registerLink");
+        this.myAccountRegisterButton = new Button(this.driver, this.myAccountRegisterLink);
+        this.myAccountRegisterButton.doubleClick();
+    }
+
+
+
 }

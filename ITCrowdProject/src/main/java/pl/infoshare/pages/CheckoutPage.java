@@ -58,8 +58,20 @@ public class CheckoutPage extends BasePage{
         this.firstName.sendKeys(user.getFirstname());
     }
 
+
+    public void sectionStreetAddress(RegisteredUser user){
+        this.street.sendKeys(user.getAddress().getStreetAddress());
+    }
+
+
     public void sectionLastName(RegisteredUser user){
         this.lastName.sendKeys(user.getLastname());
+    }
+
+    public void sectionState(RegisteredUser user){
+        this.stateInput=By.cssSelector("input[name='customer.billing.stateProvince']");
+        this.state= new TextInput(this.driver, this.stateInput);
+        this.state.sendKeys(user.getAddress().getState());
     }
 
     public void fillInSectionCountryState(RegisteredUser user){
@@ -78,6 +90,13 @@ public class CheckoutPage extends BasePage{
         this.phoneNumber.sendKeys(user.getPhoneNumber());
     }
 
+    public void sectionPostalCode(RegisteredUser user){
+        this.postalCodeInput=By.cssSelector("input[name='customer.billing.postalCode']");
+        this.postal = new TextInput(this.driver, this.postalCodeInput);
+        this.postal.sendKeys(user.getAddress().getPostalCode());
+
+    }
+
     public void submitOrder() {
         this.submitOrderButton = By.id("submitOrder");
         this.submitOrder = new Button(this.driver, this.submitOrderButton);
@@ -89,6 +108,8 @@ public class CheckoutPage extends BasePage{
         return this.validate.getText();
     }
 
-
+    public void sectionEmail(RegisteredUser user){
+        this.email.sendKeys(user.getEmail());
+    }
 }
 
