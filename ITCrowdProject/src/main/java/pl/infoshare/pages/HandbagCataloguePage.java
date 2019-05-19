@@ -28,7 +28,8 @@ public class HandbagCataloguePage extends BasePage {
     }
 
     public void addToCart(){
-        this.addToCart.click();
+
+        this.addToCart.doubleClick();
     }
 
     public void clickOnShipping() {

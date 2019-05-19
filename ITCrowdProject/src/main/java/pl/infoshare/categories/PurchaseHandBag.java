@@ -1,4 +1,4 @@
 package pl.infoshare.categories;
 
-public interface PurchaseTests {
+public interface PurchaseHandBag {
 }
