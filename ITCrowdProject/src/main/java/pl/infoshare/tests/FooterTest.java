@@ -109,4 +109,14 @@ public class FooterTest {
         assertThat(beachBagsCataloguePage.beachBagsText()).isEqualTo("Beach bags");
     }
 
+    @Category(SignInOnFooter.class)
+    @Test
+    public void signInOnFooter() {
+        FooterPage footerPage = new FooterPage(driver);
+        footerPage.clickSignIn();
+        CustomLogonPage customLogonPage = new CustomLogonPage(driver);
+        assertThat(customLogonPage.registerCustomerText()).isEqualTo("Registered customer");
+    }
+
+
 }
