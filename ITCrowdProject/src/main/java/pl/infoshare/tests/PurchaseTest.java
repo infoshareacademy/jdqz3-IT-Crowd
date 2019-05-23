@@ -166,7 +166,7 @@ public class PurchaseTest {
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
 
-
+    @Category(PurchaseBagsTest.class)
     @Test
     public void purchaseBags() {
 
