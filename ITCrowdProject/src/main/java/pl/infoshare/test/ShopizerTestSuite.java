@@ -9,10 +9,11 @@ import pl.infoshare.tests.*;
 @RunWith(Categories.class)
 @Categories.IncludeCategory({
         PurchaseHandBag.class,
+        PurchaseBagsTest.class,
+        PurchaseLaptopBagTest.class,
         AddToCartTest.class,
         AddToCartRandomBagTest.class,
         AddToCartNextRandomBagTest.class,
-        PurchaseLaptopBagTest.class,
         ValidateNameIsRequired.class,
         ValidateLastnameIsRequired.class,
         ValidateStreetAddressIsRequired.class,
@@ -22,9 +23,9 @@ import pl.infoshare.tests.*;
         ValidatePhoneNumberIsRequired.class,
         ValidateLoginFieldRequired.class,
         ValidateLoginPasswordFieldRequired.class,
-        BeachBagsOnFooter.class,
         RegisterUnderMyAccount.class,
         SignInUnderMyAccount.class,
+        BeachBagsOnFooter.class,
         HandbagsOnFooter.class,
         ContactUsOnFooter.class,
         HomeOnFooter.class,

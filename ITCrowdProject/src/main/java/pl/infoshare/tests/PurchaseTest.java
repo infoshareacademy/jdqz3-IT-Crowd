@@ -30,6 +30,7 @@ public class PurchaseTest {
     private Bag randomBag;
     private Bag randomBagNext;
     private Bag randomLaptopBag;
+    private Bag randomBags;
 
     @Rule
     public TestName testName = new TestName();
@@ -42,6 +43,7 @@ public class PurchaseTest {
         this.randomBag = BagGenerator.generateRandomBag();
         this.randomBagNext = BagGenerator.generateRandomBag();
         this.randomLaptopBag = BagGenerator.generateCategoryRandomBag("Laptop bags");
+        this.randomBags = BagGenerator.generateCategoryRandomBag("Bags");
     }
 
     @After
@@ -163,4 +165,31 @@ public class PurchaseTest {
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
+
+    @Category(PurchaseBagsTest.class)
+    @Test
+    public void purchaseBags() {
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseCategory(randomBags.getCategory());
+
+        BagsCataloguePage bagsCataloguePage = new BagsCataloguePage(driver);
+        bagsCataloguePage.getRandomBag(randomBags.getName());
+        bagsCataloguePage.addToCart();
+        bagsCataloguePage.clickOnShipping();
+        bagsCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionFullName(user);
+        checkoutPage.fillInSectionCountryState(user);
+        checkoutPage.submitOrder();
+
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+    }
+
+
 }
