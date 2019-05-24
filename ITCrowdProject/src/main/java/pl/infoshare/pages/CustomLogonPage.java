@@ -9,14 +9,17 @@ import pl.infoshare.elements.TextInput;
 
 public class CustomLogonPage extends BasePage {
 
-    private By customerEmailAddressElement = By.id("#signin_userName");
+    private By customerEmailAddressElement = By.id("signin_userName");
     private TextInput customerEmailAddress;
-    private By passwordElement = By.id("#signin_password");
+    private By passwordElement = By.id("signin_password");
     private TextInput password;
-    private By signInElement = By.id("#genericLogin-button");
+    private By signInElement = By.id("genericLogin-button");
     private Button signIn;
     private By registerElement = By.cssSelector(".login-btn[href='/shop/customer/registration.html']");
     private Button register;
+
+    private By registerCustomerText = By.cssSelector(".col-lg-6:nth-child(1) h3");
+    private Label registerCustomer;
 
     private By registeredCustomerElement = By.cssSelector("body > div.login-area.ptb-80 > div > div > div:nth-child(1) > div.login-title > h3");
     private Label registeredCustomer;
@@ -44,7 +47,7 @@ public class CustomLogonPage extends BasePage {
     }
 
     public String isRegisteredCustomerSection() {
-        this.registeredCustomerElement = By.cssSelector("body > div.login-area.ptb-80 > div > div > div:nth-child(1) > div.login-title > h3");
+        this.registeredCustomerElement = By.cssSelector("div.login-area.ptb-80:nth-child(13) div.container div.row div.col-lg-6.col-md-6.col-sm-6.col-xs-12:nth-child(1) div.login-title > h3:nth-child(1)");
         this.registeredCustomer = new Label(this.driver);
         return this.registeredCustomer.getText(this.registeredCustomerElement);
     }
@@ -65,8 +68,12 @@ public class CustomLogonPage extends BasePage {
     public void EmptyPasswordValidationOnCustomLogonPage(){
         this.customerEmailAddress = new TextInput(this.driver, this.customerEmailAddressElement);
         this.customerEmailAddress.sendKeys("test") ;
+    }
 
-
+    public String registerCustomerText() {
+        this.registerCustomerText = By.cssSelector(".col-lg-6:nth-child(1) h3");
+        this.registerCustomer = new Label(this.driver, this.registerCustomerText);
+        return this.registerCustomer.getText();
     }
 
 
