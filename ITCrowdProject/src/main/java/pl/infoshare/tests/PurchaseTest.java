@@ -30,7 +30,7 @@ public class PurchaseTest {
     private Bag randomBag;
     private Bag randomBagNext;
     private Bag randomLaptopBag;
-    private Bag randomBags;
+    private Bag randomBeachBag;
 
     @Rule
     public TestName testName = new TestName();
@@ -43,36 +43,13 @@ public class PurchaseTest {
         this.randomBag = BagGenerator.generateRandomBag();
         this.randomBagNext = BagGenerator.generateRandomBag();
         this.randomLaptopBag = BagGenerator.generateCategoryRandomBag("Laptop bags");
-        this.randomBags = BagGenerator.generateCategoryRandomBag("Bags");
+        this.randomBeachBag = BagGenerator.generateCategoryRandomBag("Bags");
     }
 
     @After
     public void closeBrowser() {
         basePage.screenShoot(testName.getMethodName());
         basePage.close();
-    }
-
-    @Category(PurchaseHandBag.class)
-    @Test
-    public void purchaseHandBag() {
-        MainPage mainPage = new MainPage(driver);
-        mainPage.chooseHandbagsCategory();
-
-        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
-        handbagCataloguePage.addToCart();
-        handbagCataloguePage.clickOnShipping();
-        handbagCataloguePage.checkout();
-
-        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
-        reviewYourOrderPage.proceedToCheckout();
-
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.sectionFullName(user);
-        checkoutPage.fillInSectionCountryState(user);
-        checkoutPage.submitOrder();
-
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
 
         @Category(AddToCartTest.class)
@@ -141,6 +118,29 @@ public class PurchaseTest {
                 .isEqualTo(randomBag.getPrice().doubleValue() + randomBagNext.getPrice().doubleValue());
     }
 
+    @Category(PurchaseHandBag.class)
+    @Test
+    public void purchaseHandBag() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseHandbagsCategory();
+
+        HandbagCataloguePage handbagCataloguePage = new HandbagCataloguePage(driver);
+        handbagCataloguePage.addToCart();
+        handbagCataloguePage.clickOnShipping();
+        handbagCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionFullName(user);
+        checkoutPage.fillInSectionCountryState(user);
+        checkoutPage.submitOrder();
+
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+    }
+
     @Category(PurchaseLaptopBagTest.class)
     @Test
     public void purchaseLaptopBag() {
@@ -166,18 +166,21 @@ public class PurchaseTest {
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
 
-    @Category(PurchaseBagsTest.class)
+    @Category(PurchaseBeachBagTest.class)
     @Test
-    public void purchaseBags() {
+    public void purchaseBeachBags() {
 
         MainPage mainPage = new MainPage(driver);
-        mainPage.chooseCategory(randomBags.getCategory());
+        mainPage.chooseCategory(randomBeachBag.getCategory());
+
+        BeachBagsCataloguePage beachBagsCataloguePage = new BeachBagsCataloguePage(driver);
+        beachBagsCataloguePage.getRandomBag(randomBeachBag.getName());
+        beachBagsCataloguePage.addToCart();
 
         BagsCataloguePage bagsCataloguePage = new BagsCataloguePage(driver);
-        bagsCataloguePage.getRandomBag(randomBags.getName());
-        bagsCataloguePage.addToCart();
         bagsCataloguePage.clickOnShipping();
-        bagsCataloguePage.checkout();
+
+        beachBagsCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.proceedToCheckout();
@@ -190,6 +193,5 @@ public class PurchaseTest {
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
-
 
 }

@@ -11,7 +11,7 @@ public class BagsCataloguePage extends BasePage{
 
 
     private Button addToCart;
-    private By chackoutLink;
+    private By checkoutLink;
     private Button checkout;
     private By bag;
 
@@ -26,14 +26,15 @@ public class BagsCataloguePage extends BasePage{
     public void addToCart(){
         this.addToCart.doubleClick();
     }
+
     public void clickOnShipping() {
         shippingCart = new ShippingCart(this.driver);
         this.shippingCart.getShippingCart();
     }
 
     public void checkout(){
-        this.chackoutLink= By.cssSelector("li.checkout-bg a");
-        this.checkout= new Button(this.driver, this.chackoutLink);
+        this.checkoutLink= By.cssSelector("li.checkout-bg a");
+        this.checkout= new Button(this.driver, this.checkoutLink);
         checkout.clickWithJs();
     }
 

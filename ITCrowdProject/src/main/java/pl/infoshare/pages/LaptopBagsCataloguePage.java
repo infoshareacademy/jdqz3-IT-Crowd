@@ -31,6 +31,7 @@ public class LaptopBagsCataloguePage extends BasePage {
     public void addToCart(){
         this.addToCart.click();
     }
+
     public void clickOnShipping() {
         shippingCart = new ShippingCart(this.driver);
         this.shippingCart.getShippingCart();
