@@ -20,7 +20,7 @@ import pl.infoshare.pages.RegisterPage;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class MyAccountTest {
+public class MyAccountTests {
 
     private WebDriver driver;
     private BasePage basePage;

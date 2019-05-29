@@ -32,12 +32,12 @@ import pl.infoshare.tests.*;
         SignInOnFooter.class,
 })
 @Suite.SuiteClasses({
-        PurchaseTest.class,
-        FooterTest.class,
-        BillingInformationValidationTest.class,
-        LoginTest.class,
-        QuantityTest.class,
-        MyAccountTest.class
+        PurchaseTests.class,
+        FooterTests.class,
+        BillingInformationValidationTests.class,
+        LoginTests.class,
+        QuantityTests.class,
+        MyAccountTests.class
 })
 public class ShopizerTestSuite {
 }

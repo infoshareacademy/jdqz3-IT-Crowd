@@ -19,7 +19,7 @@ import pl.infoshare.pages.waitForPage.WaitForPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class QuantityTest {
+public class QuantityTests {
 
     private WebDriver driver;
     private BasePage basePage;

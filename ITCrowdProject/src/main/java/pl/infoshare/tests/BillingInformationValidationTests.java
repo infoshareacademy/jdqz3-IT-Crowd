@@ -21,7 +21,7 @@ import pl.infoshare.pages.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BillingInformationValidationTest {
+public class BillingInformationValidationTests {
 
     private WebDriver driver;
     private BasePage basePage;

@@ -17,7 +17,7 @@ import pl.infoshare.pages.FooterPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LoginTest {
+public class LoginTests {
     private WebDriver driver;
     private BasePage basePage;
     private Address address;

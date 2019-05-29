@@ -18,7 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class FooterTest {
+public class FooterTests {
 
     private WebDriver driver;
     private BasePage basePage;

@@ -21,7 +21,7 @@ import pl.infoshare.pages.components.CategoriesMenu;
 import static org.assertj.core.api.Assertions.*;
 
 
-public class PurchaseTest {
+public class PurchaseTests {
 
     private WebDriver driver;
     private BasePage basePage;
