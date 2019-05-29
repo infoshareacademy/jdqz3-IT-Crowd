@@ -176,10 +176,7 @@ public class PurchaseTest {
         BeachBagsCataloguePage beachBagsCataloguePage = new BeachBagsCataloguePage(driver);
         beachBagsCataloguePage.getRandomBag(randomBeachBag.getName());
         beachBagsCataloguePage.addToCart();
-
-        BagsCataloguePage bagsCataloguePage = new BagsCataloguePage(driver);
-        bagsCataloguePage.clickOnShipping();
-
+        beachBagsCataloguePage.clickOnShipping();
         beachBagsCataloguePage.checkout();
 
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);

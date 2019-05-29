@@ -27,6 +27,11 @@ public class BeachBagsCataloguePage extends BasePage{
         this.addToCart.doubleClick();
     }
 
+    public void clickOnShipping() {
+        ShippingCart shippingCart = new ShippingCart(this.driver);
+        shippingCart.getShippingCart();
+    }
+
     public void checkout(){
         this.shippingCart= new Button(this.driver, this.shippingCartLink);
         this.shippingCart.doubleClick();
