@@ -1,4 +1,4 @@
-package pl.infoshare.test;
+package pl.infoshare.suits;
 
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;

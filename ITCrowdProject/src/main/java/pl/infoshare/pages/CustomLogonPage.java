@@ -67,7 +67,7 @@ public class CustomLogonPage extends BasePage {
     }
     public void EmptyPasswordValidationOnCustomLogonPage(){
         this.customerEmailAddress = new TextInput(this.driver, this.customerEmailAddressElement);
-        this.customerEmailAddress.sendKeys("test") ;
+        this.customerEmailAddress.sendKeys("suits") ;
     }
 
     public String registerCustomerText() {
