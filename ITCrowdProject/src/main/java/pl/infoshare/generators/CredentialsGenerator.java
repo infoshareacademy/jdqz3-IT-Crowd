@@ -2,7 +2,7 @@ package pl.infoshare.generators;
 
 
 public class CredentialsGenerator extends RandomGenerator{
-    private static String emailDomain = "@test.com";
+    private static String emailDomain = "@suits.com";
 
     public static String generateFirstname(){
         return capitalize(genrateRandomString(8));
