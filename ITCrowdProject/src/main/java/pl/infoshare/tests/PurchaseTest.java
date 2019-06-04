@@ -191,4 +191,29 @@ public class PurchaseTest {
         assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
     }
 
+    @Category(PurchaseBagsTest.class)
+    @Test
+    public void purchaseBags() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseCategory(randomBagNext.getCategory());
+
+        BagsCataloguePage bagsCataloguePage = new BagsCataloguePage(driver);
+        bagsCataloguePage.getRandomBag(randomBagNext.getName());
+        bagsCataloguePage.addToCart();
+        bagsCataloguePage.clickOnShipping();
+        bagsCataloguePage.checkout();
+
+        ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
+        reviewYourOrderPage.proceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.sectionFullName(user);
+        checkoutPage.fillInSectionCountryState(user);
+        checkoutPage.submitOrder();
+
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        assertThat(orderConfirmationPage.readOrderCompleted()).isEqualTo("Order completed");
+
+    }
+
 }
